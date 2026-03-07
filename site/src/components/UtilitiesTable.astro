@@ -1,0 +1,126 @@
+---
+// Sourced from ../../src/utilities/registry.ts - single source of truth
+import { FLUID_UTILITIES } from "@plugin/utilities/registry";
+
+const categories = [
+  { label: "Typography", keys: ["text"] },
+  {
+    label: "Padding",
+    keys: ["p", "px", "py", "pt", "pb", "pl", "pr"],
+  },
+  {
+    label: "Margin",
+    keys: ["m", "mx", "my", "mt", "mb", "ml", "mr"],
+  },
+  {
+    label: "Sizing",
+    keys: ["w", "h", "min-w", "max-w", "min-h", "max-h"],
+  },
+  { label: "Layout", keys: ["gap", "gap-x", "gap-y"] },
+  { label: "Decoration", keys: ["border", "rounded"] },
+  { label: "Background", keys: ["bg"] },
+];
+
+function exampleClass(
+  key: string,
+  def: { numericProperty?: string; colorProperty?: string },
+): string {
+  if (def.colorProperty && !def.numericProperty) {
+    return `fw-${key}-[#3b82f6-#22d3ee]`;
+  }
+  if (key === "text") return `fw-${key}-[16px-32px]`;
+  if (key === "border") return `fw-${key}-[1px-4px]`;
+  if (key === "rounded") return `fw-${key}-[4px-16px]`;
+  if (key.startsWith("gap")) return `fw-${key}-[8px-32px]`;
+  if (key === "w" || key === "h") return `fw-${key}-[200px-800px]`;
+  if (key.startsWith("min") || key.startsWith("max"))
+    return `fw-${key}-[200px-1200px]`;
+  return `fw-${key}-[8px-48px]`;
+}
+---
+
+<section
+  id="utilities"
+  class="py-16 md:py-24 px-4 md:px-6 border-t border-border bg-surface/30"
+>
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-10 md:mb-12">
+      <p class="section-label mb-3">Reference</p>
+      <h2 class="section-heading text-3xl md:text-5xl mb-4">
+        All utilities
+      </h2>
+      <p class="text-muted text-lg max-w-xl">
+        Every <code class="code-inline">fw-*</code> utility, its CSS property,
+        and an example class.
+      </p>
+    </div>
+
+    <div class="space-y-8">
+      {
+        categories.map(({ label, keys }) => (
+          <div>
+            <h3 class="font-display font-semibold text-xs uppercase tracking-widest text-muted mb-3">
+              {label}
+            </h3>
+            <div class="card p-0 overflow-hidden overflow-x-auto">
+              <table class="w-full text-sm min-w-[480px] table-fixed">
+                <colgroup>
+                  <col class="w-[30%]" />
+                  <col class="w-[30%] hidden sm:table-column" />
+                  <col />
+                </colgroup>
+                <thead>
+                  <tr class="border-b border-border bg-surface2/50">
+                    <th class="text-left px-4 py-3 font-mono text-xs text-muted font-normal">
+                      Utility
+                    </th>
+                    <th class="text-left px-4 py-3 font-mono text-xs text-muted font-normal hidden sm:table-cell">
+                      CSS Property
+                    </th>
+                    <th class="text-left px-4 py-3 font-mono text-xs text-muted font-normal">
+                      Example class
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {keys.map((key, i) => {
+                    const def = FLUID_UTILITIES[key];
+                    if (!def) return null;
+                    const example = exampleClass(key, def);
+                    const cssProps = [
+                      def.numericProperty,
+                      def.colorProperty,
+                    ]
+                      .filter(Boolean)
+                      .join(", ");
+                    return (
+                      <tr
+                        class={`border-b border-border/50 last:border-0 ${i % 2 === 0 ? "" : "bg-surface2/20"}`}
+                      >
+                        <td class="px-4 py-3">
+                          <code class="font-mono text-xs text-accent">
+                            fw-{key}-[…]
+                          </code>
+                        </td>
+                        <td class="px-4 py-3 hidden sm:table-cell">
+                          <span class="font-mono text-xs text-text/70">
+                            {cssProps}
+                          </span>
+                        </td>
+                        <td class="px-4 py-3 max-w-0">
+                          <code class="font-mono text-xs text-text/60 block truncate">
+                            {example}
+                          </code>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

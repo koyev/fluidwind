@@ -1,17 +1,32 @@
 {
   "name": "fluidwind",
-  "version": "0.1.0",
   "description": "Tailwind CSS plugin for smooth CSS clamp()-based fluid scaling",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "koyev | Marko Jevic",
+    "url": "https://github.com/koyev",
+    "email": "marko.jevic03@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koyev/fluidwind.git"
+  },
+  "homepage": "https://fluidwind.com",
+  "bugs": {
+    "url": "https://github.com/koyev/fluidwind/issues"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     }
   },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -19,11 +34,14 @@
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "peerDependencies": {
-    "tailwindcss": ">=3.0.0 || >=4.0.0-alpha.0",
-    "postcss": ">=8.0.0"
+    "tailwindcss": "^3.0.0 || ^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
@@ -33,17 +51,26 @@
     "typescript": "^5.4.0",
     "vitest": "^1.6.0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "tailwindcss",
+    "tailwind",
     "tailwind-plugin",
     "fluid",
+    "fluid-typography",
+    "fluid-spacing",
+    "fluid-layout",
     "responsive",
+    "responsive-design",
+    "breakpoint-free",
     "clamp",
-    "css"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/koyev/fluidwind.git"
-  }
+    "css-clamp",
+    "css",
+    "viewport",
+    "color-mix",
+    "typography",
+    "spacing"
+  ]
 }

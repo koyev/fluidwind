@@ -1,0 +1,111 @@
+---
+import { CopyButton } from "./CopyButton";
+import { codeToHtml } from "shiki";
+
+const patterns = [
+  {
+    title: "Hero Section",
+    description:
+      "Full-bleed hero with fluid headline, subtitle, and button padding.",
+    code: `<section class="fw-py-[48px-120px] fw-px-[20px-80px]">
+  <h1 class="fw-text-[32px-80px] fw-mb-[16px-32px]">
+    Build something fluid
+  </h1>
+  <p class="fw-text-[16px-20px] fw-mb-[24px-48px] text-gray-400">
+    Responsive without the breakpoints.
+  </p>
+  <a href="#" class="fw-text-[14px-16px] fw-px-[20px-32px] fw-py-[12px-16px]
+    bg-cyan-400 text-black rounded-lg font-bold">
+    Get started
+  </a>
+</section>`,
+  },
+  {
+    title: "Card Grid",
+    description:
+      "Article cards with fluid title, body text, and spacing.",
+    code: `<article class="fw-p-[16px-32px] fw-rounded-[8px-16px] border border-gray-800">
+  <h2 class="fw-text-[18px-24px] fw-mb-[8px-16px] font-bold">
+    Card title
+  </h2>
+  <p class="fw-text-[14px-16px] fw-mb-[12px-24px] text-gray-400">
+    Card body text that scales perfectly with the viewport.
+  </p>
+  <span class="fw-text-[12px-14px] text-cyan-400">Read more →</span>
+</article>`,
+  },
+  {
+    title: "Prose / Article",
+    description:
+      "Long-form reading with optimal line lengths at every size.",
+    code: `<article class="fw-px-[20px-80px] fw-py-[32px-64px] max-w-3xl mx-auto">
+  <h1 class="fw-text-[28px-56px] fw-mb-[16px-32px]">Article title</h1>
+  <p class="fw-text-[16px-19px] fw-mb-[16px-24px] leading-relaxed">
+    Body copy that stays comfortable to read across all screen sizes.
+    No more tiny text on mobile or overwhelming type on desktop.
+  </p>
+  <h2 class="fw-text-[22px-36px] fw-mt-[32px-64px] fw-mb-[12px-24px]">
+    Section heading
+  </h2>
+</article>`,
+  },
+  {
+    title: "Responsive Nav",
+    description:
+      "Navigation with fluid gaps, padding, and logo size.",
+    code: `<nav class="fw-px-[16px-48px] fw-py-[12px-20px]
+  flex items-center justify-between border-b border-gray-800">
+  <span class="fw-text-[16px-20px] font-bold">Logo</span>
+  <div class="fw-gap-[16px-40px] flex">
+    <a class="fw-text-[13px-15px] text-gray-400 hover:text-white">Home</a>
+    <a class="fw-text-[13px-15px] text-gray-400 hover:text-white">Docs</a>
+    <a class="fw-text-[13px-15px] text-gray-400 hover:text-white">GitHub</a>
+  </div>
+</nav>`,
+  },
+];
+
+const highlightedCodes = await Promise.all(
+  patterns.map((p) =>
+    codeToHtml(p.code, { lang: "html", theme: "github-dark-dimmed" })
+  )
+);
+---
+
+<section
+  id="patterns"
+  class="py-16 md:py-24 px-4 md:px-6 border-t border-border bg-surface/30"
+>
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-10 md:mb-12">
+      <p class="section-label mb-3">Patterns</p>
+      <h2 class="section-heading text-3xl md:text-5xl mb-4">
+        Copy-paste patterns
+      </h2>
+      <p class="text-muted text-lg max-w-xl">
+        Real markup you can drop right into your project.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {
+        patterns.map((p, i) => (
+          <div class="card group relative overflow-hidden">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <h3 class="font-display font-semibold text-text mb-1">
+                  {p.title}
+                </h3>
+                <p class="text-sm text-muted">{p.description}</p>
+              </div>
+              <CopyButton client:load text={p.code} label="" />
+            </div>
+            <div class="rounded-lg border border-border overflow-hidden">
+              <div set:html={highlightedCodes[i]} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

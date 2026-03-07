@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent: #22d3ee;
+    --accent-hover: color-mix(
+      in srgb,
+      var(--accent) 95%,
+      transparent
+    );
+    --accent-dim: rgba(34, 211, 238, 0.1);
+    --orange: #fb923c;
+    --bg: #0c0c0e;
+    --surface: #141416;
+    --surface2: #1e1e22;
+    --border: #2a2a30;
+    --text: #f0f0f4;
+    --muted: #8888a0;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--surface2);
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-accent;
+  }
+
+  .section-heading {
+    @apply font-display font-bold text-text leading-tight;
+  }
+
+  .card {
+    @apply bg-surface border border-border rounded-xl p-6;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-accent text-bg font-display font-bold px-6 py-3 rounded-lg text-sm hover:bg-accent-hover transition-colors;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border border-border text-text font-sans px-6 py-3 rounded-lg text-sm hover:border-muted transition-colors;
+  }
+
+  .code-inline {
+    @apply font-mono text-sm bg-surface2 text-accent px-2 py-0.5 rounded border border-border;
+  }
+
+  .code-block {
+    background: var(--surface2);
+    color: var(--muted);
+    padding: 1rem 1.25rem;
+    font-family: "Fira Code", monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    border-radius: 0;
+    margin: 0;
+  }
+}
+
+/* Shiki highlighted pre — consistent padding/font, use site surface2 background */
+pre.shiki {
+  background: var(--surface2) !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 1rem 1.25rem !important;
+  font-size: 0.8125rem !important;
+  line-height: 1.6 !important;
+  font-family: "Fira Code", monospace !important;
+  overflow-x: auto !important;
+}
+
+/* Range input thumb - mobile-friendly touch target */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #22d3ee;
+  cursor: pointer;
+  border: 2px solid #0c0c0e;
+  margin-top: -8px;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #22d3ee;
+  cursor: pointer;
+  border: 2px solid #0c0c0e;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 9999px;
+}
+
+/* Card padding on mobile */
+@media (max-width: 640px) {
+  .card {
+    padding: 1rem;
+  }
+}

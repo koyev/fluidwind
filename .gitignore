@@ -2,3 +2,9 @@ node_modules/
 dist/
 *.tsbuildinfo
 .DS_Store
+
+# Site
+site/node_modules/
+site/dist/
+site/.astro/
+.vercel

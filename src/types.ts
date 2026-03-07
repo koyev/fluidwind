@@ -1,9 +1,16 @@
 export interface ParsedNumber {
+  raw: string;
   value: number;
-  unit: "px" | "rem" | "vw" | "%";
+  unit: "px" | "rem" | "vw" | "%" | "unitless";
+}
+
+export interface ResolvedRange {
+  wMin: number; // px
+  wMax: number; // px
 }
 
 export interface ParsedFluidValue {
+  kind: "numeric";
   min: ParsedNumber;
   max: ParsedNumber;
 }
@@ -15,11 +22,14 @@ export interface RGBColor {
 }
 
 export interface ParsedFluidColor {
-  min: RGBColor;
-  max: RGBColor;
+  kind: "color";
+  minColor: RGBColor;
+  maxColor: RGBColor;
   minRaw: string;
   maxRaw: string;
 }
+
+export type ParsedValue = ParsedFluidValue | ParsedFluidColor;
 
 export interface FluidWindConfig {
   defaultRange?: [string, string];

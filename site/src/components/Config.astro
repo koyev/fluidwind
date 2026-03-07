@@ -1,0 +1,347 @@
+---
+import { codeToHtml } from "shiki";
+
+const defaultRangeCode = `theme: {
+  fluidwind: {
+    // Global default: all fw-* classes scale across this range
+    defaultRange: ['375px', '1440px'],
+  },
+},`;
+
+const namedRangesCode = `theme: {
+  fluidwind: {
+    defaultRange: ['375px', '1440px'],
+    ranges: {
+      // Use with: fw-text-[16px-24px]/post
+      post: ['600px', '1000px'],
+      // Use with: fw-text-[16px-24px]/hero
+      hero: ['375px', '1920px'],
+    },
+  },
+},`;
+
+const remBaseCode = `// Option A: via plugin options
+plugins: [require('fluidwind')({ remBase: 18 })],
+
+// Option B: via theme
+theme: {
+  fluidwind: {
+    remBase: 18,
+  },
+},
+
+// Resolution order: plugin options → theme → default (16)`;
+
+const inlineRangeCode = `<!-- No config needed for one-off ranges -->
+<h1 class="fw-text-[28px-72px]/[480-1280]">
+  Scales from 480px to 1280px viewport width
+</h1>`;
+
+const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase] =
+  await Promise.all([
+    codeToHtml(defaultRangeCode, {
+      lang: "js",
+      theme: "github-dark-dimmed",
+    }),
+    codeToHtml(namedRangesCode, {
+      lang: "js",
+      theme: "github-dark-dimmed",
+    }),
+    codeToHtml(inlineRangeCode, {
+      lang: "html",
+      theme: "github-dark-dimmed",
+    }),
+    codeToHtml(remBaseCode, {
+      lang: "js",
+      theme: "github-dark-dimmed",
+    }),
+  ]);
+---
+
+<section
+  id="config"
+  class="py-16 md:py-24 px-4 md:px-6 border-t border-border bg-surface/30"
+>
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-10 md:mb-12">
+      <p class="section-label mb-3">Configuration</p>
+      <h2 class="section-heading text-3xl md:text-5xl mb-4">
+        Configure Fluidwind
+      </h2>
+      <p class="text-muted text-lg max-w-xl">
+        All configuration lives in your Tailwind config. Sensible
+        defaults mean you don't need any config to get started.
+      </p>
+    </div>
+
+    <div class="space-y-8">
+      <!-- defaultRange -->
+      <details class="card group" open>
+        <summary
+          class="flex items-center justify-between cursor-pointer list-none"
+        >
+          <div>
+            <h3 class="font-display font-semibold text-text">
+              defaultRange
+            </h3>
+            <p class="text-sm text-muted mt-0.5">
+              The global viewport range for all fluid utilities.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <code class="code-inline text-xs hidden sm:block"
+              >Default: ['375px', '1440px']</code
+            >
+            <svg
+              class="transition-transform group-open:rotate-180 text-muted"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </summary>
+        <div
+          class="mt-4 rounded-xl border border-border overflow-hidden"
+        >
+          <div
+            class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+          >
+            <span class="text-xs font-mono text-muted"
+              >tailwind.config.js</span
+            >
+            <button
+              class="config-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+              data-copy={defaultRangeCode}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"
+                ></rect><path
+                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                ></path>
+              </svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <div set:html={hlDefaultRange} />
+        </div>
+      </details>
+      <!-- ranges -->
+      <details class="card group">
+        <summary
+          class="flex items-center justify-between cursor-pointer list-none"
+        >
+          <div>
+            <h3 class="font-display font-semibold text-text">
+              ranges
+            </h3>
+            <p class="text-sm text-muted mt-0.5">
+              Named viewport ranges usable via the <code
+                class="code-inline text-xs">/modifier</code
+              > syntax.
+            </p>
+          </div>
+          <svg
+            class="transition-transform group-open:rotate-180 text-muted"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </summary>
+        <div class="mt-4 space-y-4">
+          <div
+            class="rounded-xl border border-border overflow-hidden"
+          >
+            <div
+              class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+            >
+              <span class="text-xs font-mono text-muted"
+                >tailwind.config.js</span
+              >
+              <button
+                class="config-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+                data-copy={namedRangesCode}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect
+                    x="9"
+                    y="9"
+                    width="13"
+                    height="13"
+                    rx="2"
+                    ry="2"></rect><path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div set:html={hlNamedRanges} />
+          </div>
+          <div
+            class="rounded-xl border border-border overflow-hidden"
+          >
+            <div
+              class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+            >
+              <span class="text-xs font-mono text-muted"
+                >example.html</span
+              >
+              <button
+                class="config-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+                data-copy={inlineRangeCode}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect
+                    x="9"
+                    y="9"
+                    width="13"
+                    height="13"
+                    rx="2"
+                    ry="2"></rect><path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div set:html={hlInlineRange} />
+          </div>
+        </div>
+      </details>
+
+      <!-- remBase -->
+      <details class="card group">
+        <summary
+          class="flex items-center justify-between cursor-pointer list-none"
+        >
+          <div>
+            <h3 class="font-display font-semibold text-text">
+              remBase
+            </h3>
+            <p class="text-sm text-muted mt-0.5">
+              The root font size used when converting between px and
+              rem.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <code class="code-inline text-xs hidden sm:block"
+              >Default: 16</code
+            >
+            <svg
+              class="transition-transform group-open:rotate-180 text-muted"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </summary>
+        <div
+          class="mt-4 rounded-xl border border-border overflow-hidden"
+        >
+          <div
+            class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+          >
+            <span class="text-xs font-mono text-muted"
+              >tailwind.config.js</span
+            >
+            <button
+              class="config-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+              data-copy={remBaseCode}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"
+                ></rect><path
+                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                ></path>
+              </svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <div set:html={hlRemBase} />
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<style>
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+
+<script>
+  function copyText(str: string) {
+    const ta = document.createElement("textarea");
+    ta.value = str;
+    ta.setAttribute("readonly", "");
+    ta.style.cssText = "position:absolute;left:-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+    } catch {}
+    document.body.removeChild(ta);
+    navigator.clipboard?.writeText(str).catch(() => {});
+  }
+
+  document
+    .querySelectorAll<HTMLButtonElement>(".config-block-copy")
+    .forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation(); // prevent toggling the details element
+        const text = btn.getAttribute("data-copy") ?? "";
+        copyText(text);
+        const label = btn.querySelector("span");
+        if (label) label.textContent = "Copied";
+        btn.style.color = "#22d3ee";
+        setTimeout(() => {
+          if (label) label.textContent = "Copy";
+          btn.style.color = "";
+        }, 1800);
+      });
+    });
+</script>

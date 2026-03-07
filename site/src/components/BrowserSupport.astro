@@ -1,0 +1,152 @@
+---
+const features = [
+  {
+    feature: "CSS clamp()",
+    chrome: "79",
+    firefox: "75",
+    safari: "13.1",
+    edge: "79",
+    note: "Used for all numeric fluid utilities",
+  },
+  {
+    feature: "color-mix()",
+    chrome: "111",
+    firefox: "113",
+    safari: "16.2",
+    edge: "111",
+    note: "Used for fw-bg-[…] and fw-text-[color]",
+  },
+];
+---
+
+<section class="py-16 md:py-24 px-4 md:px-6 border-t border-border">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-10 md:mb-12">
+      <p class="section-label mb-3">Compatibility</p>
+      <h2 class="section-heading text-3xl md:text-5xl mb-4">
+        Browser support
+      </h2>
+      <p class="text-muted text-lg max-w-xl">
+        Fluidwind generates standard CSS. No JavaScript runs in the
+        browser.
+      </p>
+    </div>
+
+    <div class="card p-0 overflow-hidden overflow-x-auto">
+      <table class="w-full text-sm min-w-[560px]">
+        <thead>
+          <tr class="border-b border-border bg-surface2/50">
+            <th
+              class="text-left px-6 py-4 font-mono text-xs text-muted font-normal"
+              >Feature</th
+            >
+            <th
+              class="text-center px-4 py-4 font-mono text-xs text-muted font-normal"
+              >Chrome</th
+            >
+            <th
+              class="text-center px-4 py-4 font-mono text-xs text-muted font-normal"
+              >Firefox</th
+            >
+            <th
+              class="text-center px-4 py-4 font-mono text-xs text-muted font-normal"
+              >Safari</th
+            >
+            <th
+              class="text-center px-4 py-4 font-mono text-xs text-muted font-normal"
+              >Edge</th
+            >
+            <th
+              class="text-left px-6 py-4 font-mono text-xs text-muted font-normal hidden lg:table-cell"
+              >Notes</th
+            >
+          </tr>
+        </thead>
+        <tbody>
+          {
+            features.map((row) => (
+              <tr class="border-b border-border/50 last:border-0">
+                <td class="px-6 py-4">
+                  <code class="code-inline text-xs">
+                    {row.feature}
+                  </code>
+                </td>
+                <td class="text-center px-4 py-4 font-mono text-xs text-text/70">
+                  {row.chrome}
+                </td>
+                <td class="text-center px-4 py-4 font-mono text-xs text-text/70">
+                  {row.firefox}
+                </td>
+                <td class="text-center px-4 py-4 font-mono text-xs text-text/70">
+                  {row.safari}
+                </td>
+                <td class="text-center px-4 py-4 font-mono text-xs text-text/70">
+                  {row.edge}
+                </td>
+                <td class="px-6 py-4 text-xs text-muted hidden lg:table-cell">
+                  {row.note}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      class="mt-4 flex items-start items-center gap-3 bg-surface border border-border rounded-xl px-5 py-4"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-clock2-icon lucide-clock-2 flex-shrink-0 text-accent"
+        ><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4-2"
+        ></path></svg
+      >
+      <p class="text-sm text-muted">
+        Fluidwind runs entirely at <strong
+          class="text-text font-medium">build time</strong
+        > as a Tailwind plugin, it never ships JavaScript to the browser.
+        The only runtime requirements are the CSS features above.
+      </p>
+    </div>
+
+    <div class="mt-8 grid sm:grid-cols-3 gap-4">
+      <div class="card text-center">
+        <p class="font-display font-bold text-3xl text-accent mb-1">
+          99%
+        </p>
+        <p class="text-sm text-muted">
+          Browser coverage for <code class="code-inline text-xs"
+            >clamp()</code
+          >
+        </p>
+      </div>
+      <div class="card text-center">
+        <p class="font-display font-bold text-3xl text-accent mb-1">
+          93%
+        </p>
+        <p class="text-sm text-muted">
+          Browser coverage for <code class="code-inline text-xs"
+            >color-mix()</code
+          >
+        </p>
+      </div>
+      <div class="card text-center">
+        <p class="font-display font-bold text-3xl text-accent mb-1">
+          0 KB
+        </p>
+        <p class="text-sm text-muted">
+          JavaScript sent to the browser
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

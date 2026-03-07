@@ -1,0 +1,336 @@
+---
+
+---
+
+<section class="py-16 md:py-24 px-4 md:px-6 border-t border-border">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-12 md:mb-16 text-center">
+      <p class="section-label mb-3">The Problem</p>
+      <h2 class="section-heading text-3xl md:text-5xl mb-4">
+        Breakpoints are a hack.
+      </h2>
+      <p class="text-muted md:text-lg max-w-2xl mx-auto">
+        Responsive design shouldn't jump between discrete sizes. Real
+        screens don't work that way.
+      </p>
+    </div>
+
+    <!-- Graph comparison -->
+    <div class="grid md:grid-cols-2 gap-6 mb-10 md:mb-16">
+      <!-- Staircase -->
+      <div class="card" style="overflow: hidden;">
+        <p
+          class="text-xs font-mono text-muted mb-4 uppercase tracking-widest"
+        >
+          Breakpoint-based
+        </p>
+        <svg
+          viewBox="0 0 300 180"
+          class="w-full"
+          aria-label="Staircase chart showing abrupt jumps at breakpoints"
+        >
+          <!-- Grid -->
+          <line
+            x1="40"
+            y1="20"
+            x2="40"
+            y2="155"
+            stroke="#2a2a30"
+            stroke-width="1"></line>
+          <line
+            x1="40"
+            y1="155"
+            x2="285"
+            y2="155"
+            stroke="#2a2a30"
+            stroke-width="1"></line>
+          <!-- Y labels -->
+          <text
+            x="35"
+            y="24"
+            text-anchor="end"
+            font-family="monospace"
+            font-size="8"
+            fill="#8888a0">72px</text
+          >
+          <text
+            x="35"
+            y="90"
+            text-anchor="end"
+            font-family="monospace"
+            font-size="8"
+            fill="#8888a0">48px</text
+          >
+          <text
+            x="35"
+            y="157"
+            text-anchor="end"
+            font-family="monospace"
+            font-size="8"
+            fill="#8888a0">28px</text
+          >
+          <!-- X labels -->
+          <text
+            x="40"
+            y="168"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">375</text
+          >
+          <text
+            x="130"
+            y="168"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">640</text
+          >
+          <text
+            x="195"
+            y="168"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">768</text
+          >
+          <text
+            x="285"
+            y="168"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">1440</text
+          >
+          <!-- Breakpoint markers -->
+          <line
+            x1="130"
+            y1="20"
+            x2="130"
+            y2="155"
+            stroke="#2a2a30"
+            stroke-width="1"
+            stroke-dasharray="4,3"></line>
+          <line
+            x1="195"
+            y1="20"
+            x2="195"
+            y2="155"
+            stroke="#2a2a30"
+            stroke-width="1"
+            stroke-dasharray="4,3"></line>
+          <!-- Staircase path (steps at breakpoints) -->
+          <polyline
+            points="40,155 130,155 130,90 195,90 195,32 285,32"
+            fill="none"
+            stroke="#fb923c"
+            stroke-width="2"
+            stroke-linejoin="round"></polyline>
+          <!-- Labels -->
+          <text
+            x="85"
+            y="145"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">28px</text
+          >
+          <text
+            x="163"
+            y="80"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">48px</text
+          >
+          <text
+            x="240"
+            y="22"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">72px</text
+          >
+        </svg>
+        <p class="text-xs text-muted mt-3">
+          Abrupt jumps at <code class="code-inline">sm:</code>
+          <code class="code-inline">md:</code>
+          <code class="code-inline">lg:</code>
+        </p>
+      </div>
+
+      <!-- Fluid -->
+      <div
+        class="card border-accent/20"
+        style="box-shadow: 0 0 0 1px rgba(34,211,238,0.08), 0 0 40px rgba(34,211,238,0.03);"
+      >
+        <p
+          class="text-xs font-mono text-accent mb-4 uppercase tracking-widest"
+        >
+          Fluidwind
+        </p>
+        <svg
+          viewBox="0 0 300 180"
+          class="w-full"
+          aria-label="Smooth diagonal line showing continuous fluid scaling"
+        >
+          <!-- Grid -->
+          <line
+            x1="40"
+            y1="20"
+            x2="40"
+            y2="155"
+            stroke="#2a2a30"
+            stroke-width="1"></line>
+          <line
+            x1="40"
+            y1="155"
+            x2="285"
+            y2="155"
+            stroke="#2a2a30"
+            stroke-width="1"></line>
+          <!-- Y labels -->
+          <text
+            x="35"
+            y="24"
+            text-anchor="end"
+            font-family="monospace"
+            font-size="8"
+            fill="#8888a0">72px</text
+          >
+          <text
+            x="35"
+            y="90"
+            text-anchor="end"
+            font-family="monospace"
+            font-size="8"
+            fill="#8888a0">50px</text
+          >
+          <text
+            x="35"
+            y="157"
+            text-anchor="end"
+            font-family="monospace"
+            font-size="8"
+            fill="#8888a0">28px</text
+          >
+          <!-- X labels -->
+          <text
+            x="40"
+            y="168"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">375</text
+          >
+          <text
+            x="285"
+            y="168"
+            text-anchor="middle"
+            font-family="monospace"
+            font-size="7"
+            fill="#8888a0">1440</text
+          >
+          <!-- Area fill -->
+          <defs>
+            <linearGradient
+              id="fluidGrad"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
+              <stop
+                offset="0%"
+                stop-color="#22d3ee"
+                stop-opacity="0.12"></stop>
+              <stop
+                offset="100%"
+                stop-color="#22d3ee"
+                stop-opacity="0"></stop>
+            </linearGradient>
+          </defs>
+          <polygon
+            points="40,155 285,24 285,155 40,155"
+            fill="url(#fluidGrad)"></polygon>
+          <!-- Diagonal line -->
+          <line
+            x1="40"
+            y1="155"
+            x2="285"
+            y2="24"
+            stroke="#22d3ee"
+            stroke-width="2.5"
+            stroke-linecap="round"></line>
+          <!-- Endpoint dots -->
+          <circle cx="40" cy="155" r="3" fill="#22d3ee"></circle>
+          <circle cx="285" cy="24" r="3" fill="#22d3ee"></circle>
+          <!-- Labels -->
+          <text
+            x="32"
+            y="140"
+            font-family="monospace"
+            font-size="7"
+            fill="#22d3ee">28px</text
+          >
+          <text
+            x="278"
+            y="12"
+            font-family="monospace"
+            font-size="7"
+            fill="#22d3ee">72px</text
+          >
+        </svg>
+        <p class="text-xs text-accent/70 mt-3">
+          Perfectly smooth across every viewport
+        </p>
+      </div>
+    </div>
+
+    <!-- Code comparison -->
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Before -->
+      <div class="card">
+        <div class="flex items-center justify-between mb-4">
+          <p
+            class="text-xs font-mono text-orange uppercase tracking-widest"
+          >
+            Before - 16 classes
+          </p>
+          <span class="text-xs text-muted">Regular Tailwind</span>
+        </div>
+        <div class="rounded-lg border border-border overflow-hidden">
+          <pre
+            class="code-block"><code><span class="text-muted">&lt;h1 class="</span>
+  <span class="text-orange">text-2xl</span> <span class="text-muted">sm:</span><span class="text-orange">text-3xl</span> <span class="text-muted">md:</span><span class="text-orange">text-4xl</span> <span class="text-muted">lg:</span><span class="text-orange">text-5xl</span> <span class="text-muted">xl:</span><span class="text-orange">text-6xl</span> <span class="text-muted">2xl:</span><span class="text-orange">text-7xl</span>
+  <span class="text-orange">mt-4</span> <span class="text-muted">sm:</span><span class="text-orange">mt-6</span> <span class="text-muted">md:</span><span class="text-orange">mt-8</span> <span class="text-muted">lg:</span><span class="text-orange">mt-10</span> <span class="text-muted">xl:</span><span class="text-orange">mt-12</span>
+  <span class="text-orange">px-4</span> <span class="text-muted">sm:</span><span class="text-orange">px-6</span> <span class="text-muted">md:</span><span class="text-orange">px-8</span> <span class="text-muted">lg:</span><span class="text-orange">px-12</span> <span class="text-muted">xl:</span><span class="text-orange">px-16</span>
+<span class="text-muted">"&gt;</span></code></pre>
+        </div>
+      </div>
+
+      <!-- After -->
+      <div class="card border-accent/20">
+        <div class="flex items-center justify-between mb-4">
+          <p
+            class="text-xs font-mono text-accent uppercase tracking-widest"
+          >
+            After - 3 classes
+          </p>
+          <span class="text-xs text-muted">Fluidwind</span>
+        </div>
+        <div class="rounded-lg border border-border overflow-hidden">
+          <pre
+            class="code-block"><code><span class="text-muted">&lt;h1 class="</span>
+  <span class="text-accent">fw-text-[28px-72px]</span>
+  <span class="text-accent">fw-mt-[16px-48px]</span>
+  <span class="text-accent">fw-px-[16px-64px]</span>
+<span class="text-muted">"&gt;</span></code></pre>
+        </div>
+        <p class="mt-4 text-xs text-muted">
+          Smooth at every pixel. No breakpoints. No guessing.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

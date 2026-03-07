@@ -1,0 +1,90 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Problem from "../components/Problem.astro";
+import Patterns from "../components/Patterns.astro";
+import UtilitiesTable from "../components/UtilitiesTable.astro";
+import Installation from "../components/Installation.astro";
+import Config from "../components/Config.astro";
+import BrowserSupport from "../components/BrowserSupport.astro";
+import FAQ from "../components/FAQ.astro";
+import Footer from "../components/Footer.astro";
+import { Playground } from "../components/Playground";
+import { Calculator } from "../components/Calculator";
+import { ColorPlayground } from "../components/ColorPlayground";
+---
+
+<Base>
+  <Nav />
+  <Hero />
+  <Problem />
+
+  <!-- Interactive Playground -->
+  <section
+    id="playground"
+    class="py-16 md:py-24 px-4 md:px-6 border-t border-border"
+  >
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10 md:mb-12">
+        <p class="section-label mb-3">Live Demo</p>
+        <h2 class="section-heading text-3xl md:text-5xl mb-4">
+          Try it yourself
+        </h2>
+        <p class="text-muted md:text-lg max-w-xl">
+          Type any Fluidwind value below. See the generated CSS and
+          watch the element scale in real time.
+        </p>
+      </div>
+      <Playground client:load />
+    </div>
+  </section>
+
+  <!-- Clamp Calculator -->
+  <section
+    id="calculator"
+    class="py-16 md:py-24 px-4 md:px-6 border-t border-border bg-surface/30"
+  >
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10 md:mb-12">
+        <p class="section-label mb-3">Calculator</p>
+        <h2 class="section-heading text-3xl md:text-5xl mb-4">
+          Clamp calculator
+        </h2>
+        <p class="text-muted md:text-lg max-w-xl">
+          Enter your desired min/max values and viewport range. Get
+          the Fluidwind class and the CSS it generates instantly.
+        </p>
+      </div>
+      <Calculator client:load />
+    </div>
+  </section>
+
+  <!-- Color Playground -->
+  <section
+    id="colors"
+    class="py-16 md:py-24 px-4 md:px-6 border-t border-border"
+  >
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10 md:mb-12">
+        <p class="section-label mb-3">Color</p>
+        <h2 class="section-heading text-3xl md:text-5xl mb-4">
+          Fluid color interpolation
+        </h2>
+        <p class="text-muted md:text-lg max-w-xl">
+          Smoothly transition between two colors across your viewport
+          range using <code class="code-inline">color-mix()</code>.
+        </p>
+      </div>
+      <ColorPlayground client:load />
+    </div>
+  </section>
+
+  <!-- <Patterns /> -->
+  <UtilitiesTable />
+  <Installation />
+  <Config />
+  <BrowserSupport />
+  <FAQ />
+  <Footer />
+</Base>

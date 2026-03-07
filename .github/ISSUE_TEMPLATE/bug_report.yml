@@ -1,0 +1,87 @@
+name: Bug Report
+description: Something isn't working as expected
+labels: ["bug", "needs-reproduction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing a bug, please check [existing issues](https://github.com/koyev/fluidwind/issues) to avoid duplicates.
+
+  - type: input
+    id: version
+    attributes:
+      label: Fluidwind version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: tailwind-version
+    attributes:
+      label: Tailwind CSS version
+      placeholder: "3.4.0"
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: "20.11.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: class
+    attributes:
+      label: Class(es) that triggered the issue
+      description: The exact Fluidwind class(es) you used
+      placeholder: "fw-text-[16px-32px]/post"
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Tailwind config (fluidwind section)
+      description: Your `theme.fluidwind` config, if relevant
+      render: javascript
+      placeholder: |
+        theme: {
+          fluidwind: {
+            defaultRange: ["375px", "1440px"],
+            ranges: { post: ["600px", "1000px"] },
+          },
+        }
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected CSS output
+      render: css
+      placeholder: "font-size: clamp(1rem, 1.5vw + 0.44rem, 2rem);"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual CSS output
+      description: Paste the generated CSS, or describe the error
+      render: css
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: A minimal config or CodeSandbox link that reproduces the issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that might be relevant

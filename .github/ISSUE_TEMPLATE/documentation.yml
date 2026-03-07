@@ -1,0 +1,26 @@
+name: Documentation Issue
+description: Something in the docs is missing, wrong, or unclear
+labels: ["documentation"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      description: File or section where the issue is (e.g. README - Color Interpolation)
+      placeholder: "README.md - Browser Support"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong or missing?
+      placeholder: "The browser support table doesn't mention Safari 16.2 for color-mix()."
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: How should it read, or what should be added?

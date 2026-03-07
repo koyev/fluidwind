@@ -1,0 +1,130 @@
+---
+import { HeroSlider } from "./HeroSlider";
+import { CopyButton } from "./CopyButton";
+---
+
+<section
+  class="relative flex flex-col items-center justify-center px-4 md:px-6 py-16 md:py-24 overflow-hidden"
+>
+  <!-- Radial glow -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+    style="background: radial-gradient(ellipse, rgba(34,211,238,0.06) 0%, transparent 70%);"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative z-10 max-w-5xl mx-auto text-center">
+    <!-- Eyebrow -->
+    <div
+      class="inline-flex items-center gap-2 border border-border/60 rounded-full px-4 py-1.5 mb-8 text-xs font-mono text-muted animate-fade-in"
+    >
+      <span
+        class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-slow"
+      ></span>
+      Tailwind CSS Plugin &mdash; v1.0
+    </div>
+
+    <!-- Headline -->
+    <h1
+      class="font-display font-bold text-text leading-[1.1] mb-6"
+      style="font-size: clamp(2rem, 7vw, 5.5rem); animation: fadeUp 0.7s ease 0.1s both;"
+    >
+      Stop writing
+      <span class="whitespace-nowrap">
+        <span
+          class="text-muted line-through decoration-2 decoration-border/80 mr-1"
+          >sm:</span
+        >
+        <span
+          class="text-muted line-through decoration-2 decoration-border/80 mr-1"
+          >md:</span
+        >
+        <span
+          class="text-muted line-through decoration-2 decoration-border/80"
+          >lg:</span
+        >
+      </span>
+      <br />
+      <span class="text-accent">Just write fluid.</span>
+    </h1>
+
+    <p
+      class="text-muted text-base md:text-xl max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed"
+      style="animation: fadeUp 0.7s ease 0.2s both;"
+    >
+      Fluidwind replaces breakpoint-based responsive design with
+      smooth
+      <code class="code-inline">clamp()</code> based fluid scaling. One
+      class. Every viewport. Zero breakpoints.
+    </p>
+
+    <!-- Install command -->
+    <div
+      class="inline-flex items-center gap-3 bg-surface border border-border rounded-xl px-4 md:px-5 py-3 mb-10 max-w-full overflow-x-auto"
+      style="animation: fadeUp 0.7s ease 0.35s both;"
+    >
+      <span class="text-muted font-mono text-sm select-none">$</span>
+      <code class="font-mono text-sm text-text" id="install-cmd"
+        >npm install <span class="text-accent">fluidwind</span></code
+      >
+      <CopyButton client:load text="npm install fluidwind" label="" />
+    </div>
+
+    <!-- CTAs -->
+    <div
+      class="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-10 md:mb-16"
+      style="animation: fadeUp 0.7s ease 0.3s both;"
+    >
+      <a href="#install" class="btn-primary">
+        Get Started
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+      <a
+        href="https://github.com/koyev/fluidwind"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-secondary"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+          ></path>
+        </svg>
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- Live slider demo -->
+    <div style="animation: fadeUp 0.7s ease 0.45s both;">
+      <HeroSlider client:load />
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

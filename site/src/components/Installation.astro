@@ -1,0 +1,220 @@
+---
+import { Tabs } from "./Tabs";
+import { codeToHtml } from "shiki";
+
+const installTabs = [
+  { id: "npm", label: "npm", cmd: "npm install fluidwind" },
+  { id: "yarn", label: "yarn", cmd: "yarn add fluidwind" },
+  { id: "pnpm", label: "pnpm", cmd: "pnpm add fluidwind" },
+  { id: "bun", label: "bun", cmd: "bun add fluidwind" },
+];
+
+const configCode = `// tailwind.config.js
+module.exports = {
+  plugins: [require('fluidwind')({ remBase: 16 })],
+  theme: {
+    fluidwind: {
+      defaultRange: ['375px', '1440px'],
+      ranges: {
+        post: ['600px', '1000px'],
+      },
+    },
+  },
+};`;
+
+const usageCode = `<!-- Use any fw-* utility with an arbitrary value range -->
+<h1 class="fw-text-[28px-72px]">Fluid heading</h1>
+<div class="fw-p-[16px-48px] fw-gap-[8px-24px]">
+  <p class="fw-text-[14px-18px]">
+    Fluid body text with fluid padding and gap.
+  </p>
+</div>
+
+<!-- Named ranges from config -->
+<article class="fw-text-[16px-20px]/post">
+  Scales within the 'post' range (600px–1000px).
+</article>
+
+<!-- Inline viewport range -->
+<span class="fw-text-[12px-16px]/[480-960]">
+  Custom range, no config needed.
+</span>`;
+
+const highlightedConfig = await codeToHtml(configCode, {
+  lang: "js",
+  theme: "github-dark-dimmed",
+});
+const highlightedUsage = await codeToHtml(usageCode, {
+  lang: "html",
+  theme: "github-dark-dimmed",
+});
+---
+
+<section
+  id="install"
+  class="py-16 md:py-24 px-4 md:px-6 border-t border-border"
+>
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-10 md:mb-12">
+      <p class="section-label mb-3">Installation</p>
+      <h2 class="section-heading text-3xl md:text-5xl mb-4">
+        Up in 30 seconds
+      </h2>
+      <p class="text-muted text-lg max-w-xl">
+        Install Fluidwind, add it to your Tailwind config, and start
+        using <code class="code-inline">fw-*</code> classes immediately.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="space-y-8">
+      <!-- Step 1: Install -->
+      <div class="flex gap-6">
+        <div
+          class="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono text-xs font-bold"
+        >
+          1
+        </div>
+        <div class="flex-1">
+          <h3 class="font-display font-semibold text-text mb-4">
+            Install the package
+          </h3>
+          <!-- Package manager tabs -->
+          <Tabs client:load tabs={installTabs} defaultTabId="npm" />
+        </div>
+      </div>
+
+      <!-- Step 2: Configure -->
+      <div class="flex gap-6">
+        <div
+          class="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono text-xs font-bold"
+        >
+          2
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display font-semibold text-text mb-4">
+            Add to your Tailwind config
+          </h3>
+          <div
+            class="rounded-xl border border-border overflow-hidden"
+          >
+            <div
+              class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+            >
+              <span class="text-xs font-mono text-muted"
+                >tailwind.config.js</span
+              >
+              <button
+                class="install-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+                data-copy={configCode}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect
+                    x="9"
+                    y="9"
+                    width="13"
+                    height="13"
+                    rx="2"
+                    ry="2"></rect><path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div set:html={highlightedConfig} />
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Use -->
+      <div class="flex gap-6">
+        <div
+          class="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono text-xs font-bold"
+        >
+          3
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3 class="font-display font-semibold text-text mb-4">
+            Use <code class="code-inline">fw-*</code> classes in your markup
+          </h3>
+          <div
+            class="rounded-xl border border-border overflow-hidden"
+          >
+            <div
+              class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+            >
+              <span class="text-xs font-mono text-muted"
+                >example.html</span
+              >
+              <button
+                class="install-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+                data-copy={usageCode}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect
+                    x="9"
+                    y="9"
+                    width="13"
+                    height="13"
+                    rx="2"
+                    ry="2"></rect><path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div set:html={highlightedUsage} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function copyText(str: string) {
+    const ta = document.createElement("textarea");
+    ta.value = str;
+    ta.setAttribute("readonly", "");
+    ta.style.cssText = "position:absolute;left:-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+    } catch {}
+    document.body.removeChild(ta);
+    navigator.clipboard?.writeText(str).catch(() => {});
+  }
+
+  document
+    .querySelectorAll<HTMLButtonElement>(".install-block-copy")
+    .forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const text = btn.getAttribute("data-copy") ?? "";
+        copyText(text);
+        const label = btn.querySelector("span");
+        if (label) label.textContent = "Copied";
+        btn.style.color = "#22d3ee";
+        setTimeout(() => {
+          if (label) label.textContent = "Copy";
+          btn.style.color = "";
+        }, 1800);
+      });
+    });
+</script>

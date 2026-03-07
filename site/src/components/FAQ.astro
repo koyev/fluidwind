@@ -1,0 +1,78 @@
+---
+const faqs = [
+  {
+    q: "Does Fluidwind work with Tailwind v4?",
+    a: 'Yes. Fluidwind is fully compatible with Tailwind <code class="code-inline text-xs">v3</code> & <code class="code-inline text-xs">v4</code>.',
+  },
+  {
+    q: "Does it increase my CSS bundle size?",
+    a: 'Barely. Each <code class="code-inline text-xs">fw-*</code> class compiles to a single CSS declaration, a <code class="code-inline text-xs">clamp()</code> expression. There are no extra stylesheets, no runtime JS, and no media queries added.',
+  },
+  {
+    q: "What about SSR and server components?",
+    a: "Fluidwind is a Tailwind plugin, so it runs entirely at build time. The output is plain CSS. There is zero runtime dependency, it works perfectly with SSR, RSC, and static sites.",
+  },
+  {
+    q: "Can I mix Fluidwind utilities with regular Tailwind classes?",
+    a: 'Absolutely. Fluidwind classes use the <code class="code-inline text-xs">fw-</code> prefix and are completely additive. Use them alongside any standard Tailwind utilities without conflicts.',
+  },
+  {
+    q: "What units does Fluidwind accept?",
+    a: 'Fluidwind accepts <code class="code-inline text-xs">px</code>, <code class="code-inline text-xs">rem</code>, <code class="code-inline text-xs">vw</code>, and <code class="code-inline text-xs">%</code> for numeric values, including negative values for margin. Bare numbers are treated as <code class="code-inline text-xs">px</code>. For colors, it accepts 3- and 6-digit hex codes.',
+  },
+  {
+    q: "Why use rem output instead of px?",
+    a: 'Fluidwind emits <code class="code-inline text-xs">rem</code> values in the generated <code class="code-inline text-xs">clamp()</code> to respect the user\'s browser font size preference.',
+  },
+  {
+    q: "Can I use it without any configuration?",
+    a: 'Yes. The default viewport range is <code class="code-inline text-xs">375px–1440px</code> and remBase defaults to <code class="code-inline text-xs">16</code>. Zero configuration required to get started.',
+  },
+];
+---
+
+<section class="py-16 md:py-24 px-4 md:px-6 border-t border-border">
+  <div class="max-w-3xl mx-auto">
+    <div class="mb-10 md:mb-12 text-center">
+      <p class="section-label mb-3">FAQ</p>
+      <h2 class="section-heading text-3xl md:text-5xl mb-4">
+        Frequently asked
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {
+        faqs.map((faq, i) => (
+          <details class="card group" id={`faq-${i}`}>
+            <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+              <h3 class="font-display font-semibold text-text">
+                {faq.q}
+              </h3>
+              <svg
+                class="flex-shrink-0 mt-0.5 transition-transform group-open:rotate-180 text-muted"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </summary>
+            <p
+              class="mt-4 text-muted text-sm leading-relaxed"
+              set:html={faq.a}
+            />
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
