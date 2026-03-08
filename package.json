@@ -3,11 +3,7 @@
   "description": "Tailwind CSS plugin for smooth CSS clamp()-based fluid scaling",
   "version": "1.0.1",
   "license": "MIT",
-  "author": {
-    "name": "koyev",
-    "url": "https://github.com/koyev",
-    "email": "marko.jevic03@gmail.com"
-  },
+  "author": "koyev <marko.jevic03@gmail.com> (https://github.com/koyev)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/koyev/fluidwind.git"
