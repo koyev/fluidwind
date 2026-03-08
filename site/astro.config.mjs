@@ -1,23 +1,29 @@
-import { defineConfig } from 'astro/config';
-import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { defineConfig } from "astro/config";
+import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
+import { fileURLToPath } from "url";
+import path from "path";
+import vercel from "@astrojs/vercel/serverless";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  site: 'https://fluidwind.com',
+  site: "https://fluidwind.com",
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
     sitemap(),
   ],
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   vite: {
     resolve: {
       alias: {
-        '@plugin': path.resolve(__dirname, '../src'),
+        "@plugin": path.resolve(__dirname, "../src"),
       },
     },
   },

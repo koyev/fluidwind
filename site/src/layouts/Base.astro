@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import Analytics from "@vercel/analytics/astro";
 
 export interface Props {
   title?: string;
@@ -98,6 +100,9 @@ const jsonLd = {
       type="application/ld+json"
       set:html={JSON.stringify(jsonLd)}
     />
+
+    <Analytics />
+    <SpeedInsights />
   </head>
   <body
     class="bg-bg text-text font-sans antialiased overflow-x-hidden"
