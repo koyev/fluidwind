@@ -14,17 +14,6 @@
   A Tailwind CSS plugin that replaces stair-step breakpoints with smooth, mathematically perfect fluid scaling using CSS <code>clamp()</code>.
 </p>
 
-## <!-- COMING SOON
-
-<h2 align="center">DEMO</h2>
-
-<p align="center">
-  <img src="https://g-6bfyphc2dlc.vusercontent.net/placeholder.svg" alt="Fluidwind demo" width="800" height="auto" style="object-fit: cover; aspect-ratio: 16/9;" />
-</p>
-
-<h3 align="center"> 🚧 Coming soon 🚧 </h3>
--->
-
 ---
 
 ## Why Fluidwind?
