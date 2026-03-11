@@ -66,10 +66,11 @@ tests/
 ## Running Tests
 
 ```bash
-npm test              # Run all tests once
-npm run test:watch    # Watch mode
-npm run typecheck     # TypeScript type checking only
-npm run build         # Compile to dist/
+npm test                            # Run all tests once
+npm test -- --watch                 # Watch mode
+npm test -- --testPathPattern=clamp # Run a single test file
+npm run typecheck                   # TypeScript type checking only
+npm run build                       # Compile to dist/
 ```
 
 All tests must pass and `typecheck` must be clean before opening a PR.
@@ -102,6 +103,14 @@ All tests must pass and `typecheck` must be clean before opening a PR.
    ```
 
 5. Push and open a pull request against `main`. Fill in the PR template.
+
+**Branch rules enforced on `main`:**
+
+- PRs require **1 approving review** before merge
+- All **CI checks must pass** (typecheck + tests on Node 18/20/22/24)
+- **Linear history required** — squash or rebase your branch before merging, no merge commits
+- Force pushes and branch deletion are blocked
+- Keep your branch up to date with `main` before merging (`git rebase main`)
 
 ---
 
