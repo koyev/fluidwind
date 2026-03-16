@@ -11,17 +11,19 @@ interface RGB {
 function hexToRgb(hex: string): RGB | null {
   const clean = hex.replace("#", "");
   if (clean.length === 3) {
-    const r = parseInt(clean[0] + clean[0], 16);
-    const g = parseInt(clean[1] + clean[1], 16);
-    const b = parseInt(clean[2] + clean[2], 16);
-    if (isNaN(r) || isNaN(g) || isNaN(b)) return null;
+    const r = Number.parseInt(clean[0] + clean[0], 16);
+    const g = Number.parseInt(clean[1] + clean[1], 16);
+    const b = Number.parseInt(clean[2] + clean[2], 16);
+    if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b))
+      return null;
     return { r, g, b };
   }
   if (clean.length === 6) {
-    const r = parseInt(clean.slice(0, 2), 16);
-    const g = parseInt(clean.slice(2, 4), 16);
-    const b = parseInt(clean.slice(4, 6), 16);
-    if (isNaN(r) || isNaN(g) || isNaN(b)) return null;
+    const r = Number.parseInt(clean.slice(0, 2), 16);
+    const g = Number.parseInt(clean.slice(2, 4), 16);
+    const b = Number.parseInt(clean.slice(4, 6), 16);
+    if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b))
+      return null;
     return { r, g, b };
   }
   return null;
@@ -119,11 +121,15 @@ export function ColorPlayground() {
             </p>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-xs text-[#8888a0] mb-2 block">
+                <label
+                  htmlFor="minColor"
+                  className="text-xs text-[#8888a0] mb-2 block"
+                >
                   Min color (at min viewport)
                 </label>
                 <div className="flex gap-2">
                   <input
+                    name="minColor"
                     type="color"
                     value={minHex}
                     onChange={(e) => setMinHex(e.target.value)}
@@ -141,11 +147,15 @@ export function ColorPlayground() {
                 </div>
               </div>
               <div>
-                <label className="text-xs text-[#8888a0] mb-2 block">
+                <label
+                  htmlFor="maxColor"
+                  className="text-xs text-[#8888a0] mb-2 block"
+                >
                   Max color (at max viewport)
                 </label>
                 <div className="flex gap-2">
                   <input
+                    name="maxColor"
                     type="color"
                     value={maxHex}
                     onChange={(e) => setMaxHex(e.target.value)}
@@ -172,10 +182,14 @@ export function ColorPlayground() {
             </p>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-[#8888a0] mb-1.5 block">
+                <label
+                  htmlFor="minVp"
+                  className="text-xs text-[#8888a0] mb-1.5 block"
+                >
                   Min viewport
                 </label>
                 <input
+                  id="minVp"
                   type="number"
                   value={minVp}
                   onChange={(e) => setMinVp(Number(e.target.value))}
@@ -183,10 +197,14 @@ export function ColorPlayground() {
                 />
               </div>
               <div>
-                <label className="text-xs text-[#8888a0] mb-1.5 block">
+                <label
+                  htmlFor="maxVp"
+                  className="text-xs text-[#8888a0] mb-1.5 block"
+                >
                   Max viewport
                 </label>
                 <input
+                  id="maxVp"
                   type="number"
                   value={maxVp}
                   onChange={(e) => setMaxVp(Number(e.target.value))}

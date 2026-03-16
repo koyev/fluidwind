@@ -1,0 +1,14 @@
+{
+  "name": "fluidwind-sandbox",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.18.0",
+    "fluidwind": "^1.0.2",
+    "tailwindcss": "^3.4.0"
+  }
+}

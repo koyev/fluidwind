@@ -13,7 +13,7 @@ const C = {
   base: "#adbac7",
 };
 
-function HighlightedCSS({ code }: { code: string }) {
+function HighlightedCSS({ code }: Readonly<{ code: string }>) {
   type Token = { text: string; color: string };
   const tokens: Token[] = [];
   let s = code;
@@ -22,44 +22,53 @@ function HighlightedCSS({ code }: { code: string }) {
     let m: RegExpMatchArray | null;
 
     // Block comment
-    if ((m = s.match(/^\/\*[\s\S]*?\*\//))) {
+    m = new RegExp(/^\/\*[\s\S]*?\*\//).exec(s);
+    if (m) {
       tokens.push({ text: m[0], color: C.comment });
       s = s.slice(m[0].length);
       continue;
     }
+    m = new RegExp(/^@[\w-]+/).exec(s);
     // @-rule keyword
-    if ((m = s.match(/^@[\w-]+/))) {
+    if (m) {
       tokens.push({ text: m[0], color: C.atRule });
       s = s.slice(m[0].length);
       continue;
     }
+    m = new RegExp(/^\.[\w-]+/).exec(s);
     // .selector
-    if ((m = s.match(/^\.[\w-]+/))) {
+    if (m) {
       tokens.push({ text: m[0], color: C.selector });
       s = s.slice(m[0].length);
       continue;
     }
+    m = new RegExp(/^([\w-]+)(\s*)(:)/).exec(s);
     // property name followed by colon
-    if ((m = s.match(/^([\w-]+)(\s*)(:)/))) {
-      tokens.push({ text: m[1], color: C.property });
-      tokens.push({ text: m[2] + m[3], color: C.punct });
+    if (m) {
+      tokens.push(
+        { text: m[1], color: C.property },
+        { text: m[2] + m[3], color: C.punct },
+      );
       s = s.slice(m[0].length);
       continue;
     }
+    m = new RegExp(/^-?[\d.]+(?:rem|px|em|%)\b/).exec(s);
     // number with unit
-    if ((m = s.match(/^-?[\d.]+(?:rem|px|em|%)\b/))) {
+    if (m) {
       tokens.push({ text: m[0], color: C.number });
       s = s.slice(m[0].length);
       continue;
     }
+    m = new RegExp(/^-?[\d.]+/).exec(s);
     // bare number
-    if ((m = s.match(/^-?[\d.]+/))) {
+    if (m) {
       tokens.push({ text: m[0], color: C.number });
       s = s.slice(m[0].length);
       continue;
     }
+    m = new RegExp(/^[{}();,]/).exec(s);
     // punctuation
-    if ((m = s.match(/^[{}();,]/))) {
+    if (m) {
       tokens.push({ text: m[0], color: C.punct });
       s = s.slice(1);
       continue;
@@ -72,7 +81,7 @@ function HighlightedCSS({ code }: { code: string }) {
   return (
     <>
       {tokens.map((t, i) => (
-        <span key={i} style={{ color: t.color }}>
+        <span key={`${i}-${t.text}`} style={{ color: t.color }}>
           {t.text}
         </span>
       ))}
@@ -112,7 +121,7 @@ function toPxValue(value: number, unit: Unit, remBase = 16): number {
 
 function formatValue(px: number, unit: Unit, remBase = 16): string {
   if (unit === "rem")
-    return `${parseFloat((px / remBase).toFixed(4))}rem`;
+    return `${Number.parseFloat((px / remBase).toFixed(4))}rem`;
   return `${px}px`;
 }
 
@@ -133,10 +142,10 @@ export function Calculator() {
 
     if (
       wMin >= wMax ||
-      isNaN(vMin) ||
-      isNaN(vMax) ||
-      isNaN(wMin) ||
-      isNaN(wMax)
+      Number.isNaN(vMin) ||
+      Number.isNaN(vMax) ||
+      Number.isNaN(wMin) ||
+      Number.isNaN(wMax)
     ) {
       return null;
     }
@@ -184,10 +193,14 @@ export function Calculator() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-[#8888a0] mb-1.5 block">
+                <label
+                  htmlFor="minVal"
+                  className="text-xs text-[#8888a0] mb-1.5 block"
+                >
                   Min value
                 </label>
                 <input
+                  name="minVal"
                   type="number"
                   value={minVal}
                   onChange={(e) => setMinVal(Number(e.target.value))}
@@ -195,10 +208,15 @@ export function Calculator() {
                 />
               </div>
               <div>
-                <label className="text-xs text-[#8888a0] mb-1.5 block">
+                <label
+                  htmlFor="maxVal"
+                  className="text-xs text-[#8888a0] mb-1.5 block"
+                >
                   Max value
                 </label>
                 <input
+                  id="maxVal"
+                  name="maxVal"
                   type="number"
                   value={maxVal}
                   onChange={(e) => setMaxVal(Number(e.target.value))}
@@ -228,10 +246,15 @@ export function Calculator() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-[#8888a0] mb-1.5 block">
+                <label
+                  htmlFor="minVp"
+                  className="text-xs text-[#8888a0] mb-1.5 block"
+                >
                   Min viewport
                 </label>
                 <input
+                  id="minVp"
+                  name="minVp"
                   type="number"
                   value={minVp}
                   onChange={(e) => setMinVp(Number(e.target.value))}
@@ -239,10 +262,15 @@ export function Calculator() {
                 />
               </div>
               <div>
-                <label className="text-xs text-[#8888a0] mb-1.5 block">
+                <label
+                  htmlFor="maxVp"
+                  className="text-xs text-[#8888a0] mb-1.5 block"
+                >
                   Max viewport
                 </label>
                 <input
+                  id="maxVp"
+                  name="maxVp"
                   type="number"
                   value={maxVp}
                   onChange={(e) => setMaxVp(Number(e.target.value))}

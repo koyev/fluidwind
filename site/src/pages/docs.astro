@@ -1,0 +1,102 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Config from "../components/Config.astro";
+import UtilitiesTable from "../components/UtilitiesTable.astro";
+import BrowserSupport from "../components/BrowserSupport.astro";
+import FAQ from "../components/FAQ.astro";
+import Footer from "../components/Footer.astro";
+
+const navItems = [
+  { id: "config", label: "Config" },
+  { id: "utilities", label: "Utilities" },
+  { id: "browser-support", label: "Browser Support" },
+  { id: "faq", label: "FAQ" },
+];
+---
+
+<Base
+  title="Docs — Fluidwind"
+  description="Fluidwind reference documentation: configuration, utilities, browser support, and FAQ."
+>
+  <Nav />
+
+  <div
+    class="max-w-7xl mx-auto px-4 md:px-6 flex gap-10 items-start pt-10 pb-24"
+  >
+    <!-- Sidebar -->
+    <aside class="hidden lg:block w-52 flex-shrink-0 sticky top-24">
+      <p
+        class="text-xs font-mono text-muted uppercase tracking-widest mb-4 px-2"
+      >
+        Documentation
+      </p>
+      <nav id="docs-sidebar" class="flex flex-col gap-0.5">
+        {
+          navItems.map(({ id, label }) => (
+            <a
+              href={`#${id}`}
+              data-section={id}
+              class="sidebar-link block px-3 py-1.5 rounded-lg text-sm text-muted hover:text-text transition-colors"
+            >
+              {label}
+            </a>
+          ))
+        }
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <div class="flex-1 min-w-0">
+      <Config />
+      <UtilitiesTable />
+      <BrowserSupport />
+      <FAQ />
+    </div>
+  </div>
+
+  <Footer />
+</Base>
+
+<style>
+  .sidebar-link.active {
+    color: var(--color-accent, #22d3ee);
+    background: color-mix(
+      in srgb,
+      var(--color-accent, #22d3ee) 8%,
+      transparent
+    );
+  }
+</style>
+
+<script>
+  const links =
+    document.querySelectorAll<HTMLAnchorElement>(".sidebar-link");
+  const sectionIds = Array.from(links).map((l) => l.dataset.section!);
+
+  function setActive(id: string) {
+    links.forEach((l) => {
+      l.classList.toggle("active", l.dataset.section === id);
+    });
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+          break;
+        }
+      }
+    },
+    { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
+  );
+
+  sectionIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  // Set initial active on load
+  if (sectionIds[0]) setActive(sectionIds[0]);
+</script>

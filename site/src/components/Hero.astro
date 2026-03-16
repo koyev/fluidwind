@@ -76,19 +76,6 @@ import { CopyButton } from "./CopyButton";
       class="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-10 md:mb-16"
       style="animation: fadeUp 0.7s ease 0.3s both;"
     >
-      <a href="#install" class="btn-primary">
-        Get Started
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <path d="M5 12h14M12 5l7 7-7 7"></path>
-        </svg>
-      </a>
       <a
         href="https://github.com/koyev/fluidwind"
         target="_blank"
@@ -106,6 +93,36 @@ import { CopyButton } from "./CopyButton";
           ></path>
         </svg>
         View on GitHub
+      </a>
+      <a
+        href="https://stackblitz.com/github/koyev/fluidwind/tree/main/sandbox"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-secondary"
+      >
+        <!-- What is ration of 56 width 78 height? -->
+        <!-- 
+        The ratio of width to height for the given dimensions (56 width and 78 height) can be calculated as follows:
+        Ratio = Width / Height
+              = 56 / 78
+              ≈ 0.7179
+
+              use that for svg viewbox to make it fit better in the design
+              and for widht and height to maintain the aspect ratio while fitting in the design.
+              but make height 14
+       -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="10.05"
+          height="14"
+          viewBox="0 0 56 78"
+          fill="none"
+        >
+          <path
+            d="M23.4273 48.2853C23.7931 47.5845 23.0614 46.8837 22.3298 46.8837H1.11228C0.0148224 46.8837 -0.350997 45.8326 0.380642 45.1318L40.9866 0.282084C41.7182 -0.418693 43.1815 0.282084 42.8157 1.33325L32.9386 30.0651C32.5727 30.7659 32.9386 31.4666 33.6702 31.4666H54.8877C55.9852 31.4666 56.351 32.5178 55.6194 33.2186L15.0134 77.7179C14.2818 78.4187 12.8185 77.7179 13.1843 76.6667L23.4273 48.2853Z"
+            fill="#FFFFFF"></path>
+        </svg>
+        Open in StackBlitz
       </a>
     </div>
 

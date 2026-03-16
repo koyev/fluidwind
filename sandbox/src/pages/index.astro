@@ -1,0 +1,168 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FluidWind Sandbox</title>
+  </head>
+  <body class="p-8 max-w-4xl mx-auto space-y-16">
+
+    <header class="border-b border-white/10 pb-8">
+      <h1 class="fw-text-[24px-48px] font-bold text-cyan-400 mb-2">
+        FluidWind Sandbox
+      </h1>
+      <p class="fw-text-[14px-18px] text-slate-400">
+        Resize the window to see fluid scaling in action.
+      </p>
+    </header>
+
+    <!-- Section 1: Fluid text size -->
+    <section>
+      <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6">
+        1 — Fluid Text Size
+      </h2>
+      <div class="space-y-4">
+        <p class="fw-text-[12px-48px] font-bold">fw-text-[12px-48px] — big heading</p>
+        <p class="fw-text-[14px-28px]">fw-text-[14px-28px] — subheading</p>
+        <p class="fw-text-[10px-16px] text-slate-400">fw-text-[10px-16px] — caption text</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Fluid padding -->
+    <section>
+      <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6">
+        2 — Fluid Padding
+      </h2>
+      <div class="space-y-4">
+        <div class="fw-p-[8px-48px] bg-white/5 border border-white/10 rounded-lg inline-block">
+          fw-p-[8px-48px] — all sides
+        </div>
+        <div>
+          <div class="fw-px-[8px-40px] fw-py-[4px-20px] bg-white/5 border border-white/10 rounded-lg inline-block">
+            fw-px-[8px-40px] + fw-py-[4px-20px]
+          </div>
+        </div>
+        <div>
+          <div class="fw-pt-[4px-32px] fw-pb-[8px-40px] bg-white/5 border border-white/10 rounded-lg inline-block px-4">
+            fw-pt-[4px-32px] + fw-pb-[8px-40px]
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Negative margin -->
+    <section>
+      <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6">
+        3 — Negative Margin
+      </h2>
+      <div class="bg-white/5 border border-white/10 rounded-lg p-6 overflow-hidden">
+        <div class="fw-mt-[-8px--32px] bg-cyan-400/20 border border-cyan-400/30 rounded p-2 text-sm">
+          fw-mt-[-8px--32px] — negative top margin
+        </div>
+        <div class="fw-ml-[-4px--24px] bg-purple-400/20 border border-purple-400/30 rounded p-2 text-sm mt-4">
+          fw-ml-[-4px--24px] — negative left margin
+        </div>
+        <div class="fw-mx-[-8px--20px] bg-emerald-400/20 border border-emerald-400/30 rounded p-2 text-sm mt-4">
+          fw-mx-[-8px--20px] — negative horizontal margin
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Mixed units -->
+    <section>
+      <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6">
+        4 — Mixed Units (px + rem)
+      </h2>
+      <div class="space-y-4">
+        <p class="fw-text-[1rem-4rem] font-bold">fw-text-[1rem-4rem]</p>
+        <p class="fw-text-[14px-3rem]">fw-text-[14px-3rem]</p>
+        <div class="fw-p-[8px-2rem] bg-white/5 border border-white/10 rounded-lg inline-block">
+          fw-p-[8px-2rem]
+        </div>
+        <div class="flex fw-gap-[8px-32px]">
+          <div class="bg-white/10 rounded px-3 py-2 text-sm">fw-gap-[8px-32px]</div>
+          <div class="bg-white/10 rounded px-3 py-2 text-sm">item 2</div>
+          <div class="bg-white/10 rounded px-3 py-2 text-sm">item 3</div>
+        </div>
+        <div class="fw-w-[100px-300px] fw-h-[40px-120px] bg-white/10 border border-white/20 rounded-lg flex items-center justify-center text-sm">
+          fw-w + fw-h sizing
+        </div>
+        <div class="fw-text-[12px-18px] fw-rounded-[4px-16px] border border-white/20 bg-white/5 inline-block fw-p-[6px-16px]">
+          fw-rounded-[4px-16px]
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Fluid color interpolation -->
+    <section>
+      <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6">
+        5 — Fluid Color Interpolation
+      </h2>
+      <div class="space-y-4">
+        <div class="fw-bg-[#0ea5e9-#8b5cf6] fw-p-[16px-32px] rounded-lg font-semibold">
+          fw-bg-[#0ea5e9-#8b5cf6] — blue → purple background
+        </div>
+        <p class="fw-text-[#22d3ee-#f472b6] fw-text-[18px-32px] font-bold">
+          fw-text-[#22d3ee-#f472b6] — cyan → pink text
+        </p>
+        <div class="fw-bg-[#111827-#f0fdf4] fw-text-[#f9fafb-#111827] fw-p-[16px-32px] rounded-lg font-medium">
+          Shorthand hex: fw-bg-[#111827-#f0fdf4]
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Range modifiers -->
+    <section>
+      <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6">
+        6 — Range Modifiers
+      </h2>
+      <div class="space-y-4">
+        <p class="fw-text-[12px-32px]/narrow font-semibold">
+          fw-text-[12px-32px]/narrow — scales 320px→768px
+        </p>
+        <p class="fw-text-[14px-40px]/wide font-semibold">
+          fw-text-[14px-40px]/wide — scales 768px→1920px
+        </p>
+        <p class="fw-text-[13px-24px]/post font-semibold">
+          fw-text-[13px-24px]/post — scales 600px→1000px
+        </p>
+        <p class="fw-text-[12px-28px]/[500-900] font-semibold text-cyan-400">
+          fw-text-[12px-28px]/[500-900] — inline range
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 7: Combined real-world card -->
+    <section>
+      <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-6">
+        7 — Real-World Card
+      </h2>
+      <div class="fw-p-[16px-48px] fw-rounded-[8px-24px] fw-bg-[#0f172a-#1e293b] border border-white/10 fw-gap-[12px-32px] flex flex-col">
+        <div class="flex items-center fw-gap-[8px-20px]">
+          <div class="fw-w-[32px-64px] fw-h-[32px-64px] fw-rounded-[6px-16px] bg-cyan-400/20 flex items-center justify-center">
+            <span class="fw-text-[14px-24px]">⚡</span>
+          </div>
+          <h3 class="fw-text-[16px-28px] font-bold fw-text-[#94a3b8-#f8fafc]">
+            Fluid Card Title
+          </h3>
+        </div>
+        <p class="fw-text-[12px-16px] text-slate-400 leading-relaxed">
+          This card uses multiple <code class="text-cyan-400">fw-*</code> classes together:
+          fluid padding, border-radius, gap, sizing, and color interpolation.
+          Resize the window to watch everything scale smoothly.
+        </p>
+        <a
+          href="#"
+          class="fw-text-[11px-14px] fw-px-[12px-24px] fw-py-[6px-12px] fw-rounded-[4px-10px] fw-bg-[#0891b2-#7c3aed] font-semibold self-start"
+        >
+          Learn more →
+        </a>
+      </div>
+    </section>
+
+  </body>
+</html>

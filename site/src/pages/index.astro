@@ -4,11 +4,7 @@ import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import Problem from "../components/Problem.astro";
 import Patterns from "../components/Patterns.astro";
-import UtilitiesTable from "../components/UtilitiesTable.astro";
 import Installation from "../components/Installation.astro";
-import Config from "../components/Config.astro";
-import BrowserSupport from "../components/BrowserSupport.astro";
-import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
 import { Playground } from "../components/Playground";
 import { Calculator } from "../components/Calculator";
@@ -76,15 +72,11 @@ import { ColorPlayground } from "../components/ColorPlayground";
           range using <code class="code-inline">color-mix()</code>.
         </p>
       </div>
-      <ColorPlayground client:load />
+      <ColorPlayground client:only="react" />
     </div>
   </section>
 
   <!-- <Patterns /> -->
-  <UtilitiesTable />
   <Installation />
-  <Config />
-  <BrowserSupport />
-  <FAQ />
   <Footer />
 </Base>
