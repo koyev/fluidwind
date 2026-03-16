@@ -172,6 +172,24 @@ Fluidwind utilities compose with standard Tailwind breakpoints:
 <p class="fw-text-[14px-18px] lg:fw-text-[18px-28px]">...</p>
 ```
 
+### With tailwind-merge
+
+Install [`tailwind-merge`](https://github.com/dcastil/tailwind-merge) and wrap your setup with `withFluidwind()` so `fw-*` classes correctly conflict with — and override — standard Tailwind classes (and vice-versa):
+
+```ts
+import { extendTailwindMerge } from 'tailwind-merge'
+import { withFluidwind } from 'fluidwind/tailwind-merge'
+
+export const twMerge = extendTailwindMerge(withFluidwind())
+
+// twMerge('p-4 fw-p-[1rem-2rem]')            → 'fw-p-[1rem-2rem]'
+// twMerge('text-sm fw-text-[16px-32px]')     → 'fw-text-[16px-32px]'
+// twMerge('fw-gap-[4px-16px] gap-8')         → 'gap-8'
+// twMerge('fw-p-[4px-8px] fw-p-[8px-16px]') → 'fw-p-[8px-16px]'
+```
+
+`tailwind-merge` is an optional peer dependency — only needed if you use class merging.
+
 ---
 
 ## Supported Utilities
