@@ -37,7 +37,20 @@ const inlineRangeCode = `<!-- No config needed for one-off ranges -->
   Scales from 480px to 1280px viewport width
 </h1>`;
 
-const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase] =
+const twMergeCode = `import { extendTailwindMerge } from 'tailwind-merge'
+import { withFluidwind } from 'fluidwind/tailwind-merge'
+
+// Pass withFluidwind() to extendTailwindMerge — that's all it takes.
+// fw-* classes now conflict with (and correctly override) standard Tailwind classes.
+export const twMerge = extendTailwindMerge(withFluidwind())
+
+// Examples:
+// twMerge('p-4 fw-p-[1rem-2rem]')          → 'fw-p-[1rem-2rem]'
+// twMerge('text-sm fw-text-[16px-32px]')   → 'fw-text-[16px-32px]'
+// twMerge('fw-gap-[4px-16px] gap-8')       → 'gap-8'
+// twMerge('fw-p-[4px-8px] fw-p-[8px-16px]') → 'fw-p-[8px-16px]'`;
+
+const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase, hlTwMerge] =
   await Promise.all([
     codeToHtml(defaultRangeCode, {
       lang: "js",
@@ -53,6 +66,10 @@ const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase] =
     }),
     codeToHtml(remBaseCode, {
       lang: "js",
+      theme: "github-dark-dimmed",
+    }),
+    codeToHtml(twMergeCode, {
+      lang: "ts",
       theme: "github-dark-dimmed",
     }),
   ]);
@@ -301,6 +318,80 @@ const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase] =
             </button>
           </div>
           <div set:html={hlRemBase} />
+        </div>
+      </details>
+      <!-- tailwind-merge -->
+      <details class="card group">
+        <summary
+          class="flex items-center justify-between cursor-pointer list-none"
+        >
+          <div>
+            <h3 class="font-display font-semibold text-text">
+              tailwind-merge
+            </h3>
+            <p class="text-sm text-muted mt-0.5">
+              First-class conflict resolution — <code
+                class="code-inline text-xs">fw-*</code
+              > classes correctly override standard Tailwind (and vice-versa).
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <code class="code-inline text-xs hidden sm:block">Optional</code>
+            <svg
+              class="transition-transform group-open:rotate-180 text-muted"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </summary>
+        <div class="mt-4 space-y-4">
+          <p class="text-sm text-muted">
+            Install <code class="code-inline text-xs">tailwind-merge</code> then
+            wrap your setup with <code class="code-inline text-xs"
+              >withFluidwind()</code
+            > from <code class="code-inline text-xs"
+              >fluidwind/tailwind-merge</code
+            >. All 23 <code class="code-inline text-xs">fw-*</code> utilities are
+            mapped to their corresponding tailwind-merge class groups automatically.
+          </p>
+          <div class="rounded-xl border border-border overflow-hidden">
+            <div
+              class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+            >
+              <span class="text-xs font-mono text-muted">tw-merge.ts</span>
+              <button
+                class="config-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+                data-copy={twMergeCode}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect
+                    x="9"
+                    y="9"
+                    width="13"
+                    height="13"
+                    rx="2"
+                    ry="2"></rect><path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div set:html={hlTwMerge} />
+          </div>
         </div>
       </details>
     </div>
