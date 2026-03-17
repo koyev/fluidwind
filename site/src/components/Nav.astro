@@ -1,5 +1,5 @@
 ---
-
+const isHome = Astro.url.pathname === '/';
 ---
 
 <header
@@ -26,10 +26,10 @@
       <a href="/docs" class="hover:text-text transition-colors"
         >Docs</a
       >
-      <a href="#playground" class="hover:text-text transition-colors"
+      <a href={isHome ? '#playground' : '/#playground'} class="hover:text-text transition-colors"
         >Playground</a
       >
-      <a href="#calculator" class="hover:text-text transition-colors"
+      <a href={isHome ? '#calculator' : '/#calculator'} class="hover:text-text transition-colors"
         >Calculator</a
       >
     </div>

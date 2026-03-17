@@ -3,6 +3,9 @@ import fluidwind from "fluidwind";
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
+  safelist: [
+    { pattern: /^fw-(bg|text)-\[#/ },
+  ],
   plugins: [fluidwind({ remBase: 16 })],
   theme: {
     fluidwind: {
