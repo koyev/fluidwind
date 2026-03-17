@@ -1,7 +1,7 @@
-import fluidwind from "fluidwind";
+const fluidwind = require("fluidwind");
 
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
   safelist: [
     { pattern: /^fw-(bg|text)-\[#/ },
