@@ -4,4 +4,4 @@ dist/
 *.tsbuildinfo
 .DS_Store
 .vercel
-pnpm-lock.yaml
+package-lock.json
