@@ -1,14 +1,7 @@
 node_modules/
 dist/
+.astro/
 *.tsbuildinfo
 .DS_Store
-
-# Site
-site/node_modules/
-site/dist/
-site/.astro/
-site/pnpm-lock.yaml
 .vercel
-
-# Lockfiles (project uses npm)
 pnpm-lock.yaml
