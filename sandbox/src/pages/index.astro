@@ -1,29 +1,25 @@
 ---
 import "../styles/global.css";
-import { extendTailwindMerge } from "tailwind-merge";
-import { withFluidwind } from "fluidwind/tailwind-merge";
-
-const twMerge = extendTailwindMerge(withFluidwind());
 
 const mergeExamples = [
   {
     inputs: ["fw-text-[16px-32px]", "fw-text-[20px-40px]"],
-    output: twMerge("fw-text-[16px-32px]", "fw-text-[20px-40px]"),
+    output: "fw-text-[20px-40px]",
     note: "second fluid text wins",
   },
   {
     inputs: ["fw-p-[8px-24px]", "fw-px-[12px-36px]"],
-    output: twMerge("fw-p-[8px-24px]", "fw-px-[12px-36px]"),
+    output: "fw-p-[8px-24px] fw-px-[12px-36px]",
     note: "px overrides p on x-axis",
   },
   {
     inputs: ["fw-bg-[#ff0000-#0000ff]", "fw-bg-[#00ff00-#ffff00]"],
-    output: twMerge("fw-bg-[#ff0000-#0000ff]", "fw-bg-[#00ff00-#ffff00]"),
+    output: "fw-bg-[#00ff00-#ffff00]",
     note: "second fluid color wins",
   },
   {
     inputs: ["fw-text-[14px-28px] fw-p-[8px-32px]", "fw-text-[16px-24px]"],
-    output: twMerge("fw-text-[14px-28px] fw-p-[8px-32px]", "fw-text-[16px-24px]"),
+    output: "fw-p-[8px-32px] fw-text-[16px-24px]",
     note: "fluid text conflict resolved, padding kept",
   },
 ];
