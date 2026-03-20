@@ -60,28 +60,27 @@ describe("buildColorClamp", () => {
     expect(result).toContain("#0000ff");
   });
 
-  it("clamp bounds are 0% and 100%", () => {
+  it("clamp bounds are 0 and 100", () => {
     const result = buildColorClamp({
       minColor: { r: 255, g: 0, b: 0 },
       maxColor: { r: 0, g: 0, b: 255 },
       wMin,
       wMax,
     });
-    expect(result).toContain("clamp(0%,");
-    expect(result).toContain(", 100%)");
+    expect(result).toContain("clamp(0,");
+    expect(result).toContain(", 100)");
   });
 
-  it("produces correct slope and intercept for 375→1440 range", () => {
-    // slope = -100 / (1440 - 375) = -100/1065 ≈ -0.0939 → slopeVw ≈ -9.3897
-    // intercept = 100 - slope * 375 ≈ 100 + 35.211 = 135.211
+  it("produces correct wMax and range values for 375→1440 range", () => {
+    // range = 1440 - 375 = 1065
     const result = buildColorClamp({
       minColor: { r: 255, g: 0, b: 0 },
       maxColor: { r: 0, g: 0, b: 255 },
       wMin,
       wMax,
     });
-    expect(result).toContain("-9.3897vw");
-    expect(result).toContain("135.2113%");
+    expect(result).toContain("1440 - tan(atan2(100vw, 1px))");
+    expect(result).toContain("/ 1065,");
   });
 
   it("full output snapshot for red→blue over 375→1440", () => {
@@ -92,7 +91,7 @@ describe("buildColorClamp", () => {
       wMax,
     });
     expect(result).toBe(
-      "color-mix(in srgb, #ff0000 clamp(0%, -9.3897vw + 135.2113%, 100%), #0000ff)",
+      "color-mix(in srgb, #ff0000 calc(clamp(0, 100 * (1440 - tan(atan2(100vw, 1px))) / 1065, 100) * 1%), #0000ff)",
     );
   });
 
@@ -103,21 +102,19 @@ describe("buildColorClamp", () => {
       wMin,
       wMax,
     });
-    expect(result).toMatch(/^color-mix\(in srgb, #ffffff clamp\(0%,/);
+    expect(result).toMatch(/^color-mix\(in srgb, #ffffff calc\(clamp\(0,/);
     expect(result).toMatch(/, #000000\)$/);
   });
 
   it("works with a custom narrower range", () => {
-    // 600px → 1000px
+    // 600px → 1000px, range = 400
     const result = buildColorClamp({
       minColor: { r: 255, g: 0, b: 0 },
       maxColor: { r: 0, g: 0, b: 255 },
       wMin: 600,
       wMax: 1000,
     });
-    // slope = -100/400 = -0.25, slope_vw = -25
-    // intercept = 100 + 0.25*600 = 100 + 150 = 250
-    expect(result).toContain("-25vw");
-    expect(result).toContain("250%");
+    expect(result).toContain("1000 - tan(atan2(100vw, 1px))");
+    expect(result).toContain("/ 400,");
   });
 });
