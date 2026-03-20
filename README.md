@@ -149,7 +149,7 @@ Generated CSS:
 ```css
 background-color: color-mix(
   in srgb,
-  #ff0000 clamp(0%, -9.39vw + 135.21%, 100%),
+  #ff0000 calc(clamp(0, 100 * (1440 - tan(atan2(100vw, 1px))) / 1065, 100) * 1%),
   #0000ff
 );
 ```

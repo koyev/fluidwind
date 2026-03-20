@@ -38,7 +38,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "sandbox": "bash scripts/sandbox.sh",
-    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+    "prepublishOnly": "pnpm run typecheck && pnpm run test && pnpm run build"
   },
   "engines": {
     "node": ">=18"

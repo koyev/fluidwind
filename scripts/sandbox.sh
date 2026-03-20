@@ -17,7 +17,7 @@ restore() {
   echo ""
   echo "Restoring sandbox to published fluidwind..."
   cd "$SANDBOX"
-  pnpm add fluidwind@^1.1.0 --silent
+  pnpm add fluidwind@latest --silent
   echo "Done."
 }
 trap restore EXIT
