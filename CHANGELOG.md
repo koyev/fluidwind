@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] - 2026-03-21
+
+### Fixed
+
+- Color interpolation (`fw-bg-[color1-color2]`, `fw-text-[color1-color2]`) now generates valid CSS. The previous `clamp(0%, Xvw + Y%, 100%)` expression mixed `<length>` (`vw`) with `<percentage>` in a context where only pure `<percentage>` is valid, causing browsers to reject the declaration. The percentage is now expressed as `calc(clamp(0, 100 * (wMax - tan(atan2(100vw, 1px))) / range, 100) * 1%)`, which is type-safe and has the same browser support floor as `color-mix()`.
+
+---
+
+## [1.1.0] - 2026-03-17
+
+### Added
+
+- First-class `tailwind-merge` integration via a new `fluidwind/tailwind-merge` entry point. Export `withFluidwind()` and pass it to `extendTailwindMerge()` to teach tailwind-merge about all `fw-*` utility prefixes so they correctly conflict with — and override — their standard Tailwind counterparts.
+- Local development sandbox (`pnpm sandbox`) — an Astro project that builds and installs the current source as a tarball, starts a dev server, then restores to the published npm version on exit.
+
+---
+
 ## [1.0.0] - 2026-03-06
 
 ### Added
