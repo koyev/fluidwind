@@ -18,7 +18,10 @@ const mergeExamples = [
     note: "second fluid color wins",
   },
   {
-    inputs: ["fw-text-[14px-28px] fw-p-[8px-32px]", "fw-text-[16px-24px]"],
+    inputs: [
+      "fw-text-[14px-28px] fw-p-[8px-32px]",
+      "fw-text-[16px-24px]",
+    ],
     output: "fw-p-[8px-32px] fw-text-[16px-24px]",
     note: "fluid text conflict resolved, padding kept",
   },
@@ -29,44 +32,71 @@ const mergeExamples = [
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>FluidWind Sandbox</title>
   </head>
   <body class="min-h-screen bg-slate-950 text-slate-100 p-8">
     <div class="max-w-4xl mx-auto space-y-12">
-
       <!-- Header -->
       <header class="border-b border-white/10 pb-8">
         <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-sm font-bold bg-cyan-400 text-slate-950 px-2 py-0.5 rounded">fw</span>
+          <span
+            class="font-mono text-sm font-bold bg-cyan-400 text-slate-950 px-2 py-0.5 rounded"
+            >fw</span
+          >
           <h1 class="fw-text-[22px-36px] font-bold tracking-tight">
             Fluid<span class="text-cyan-400">Wind</span>
           </h1>
-          <span class="text-xs font-mono bg-white/10 text-slate-400 px-2 py-0.5 rounded-full border border-white/10">v1.1.0</span>
+          <span
+            class="text-xs font-mono bg-white/10 text-slate-400 px-2 py-0.5 rounded-full border border-white/10"
+            >v1.1.0</span
+          >
         </div>
         <p class="fw-text-[14px-18px] text-slate-400 max-w-xl">
-          Smooth CSS <code class="text-cyan-400">clamp()</code>-based fluid scaling.
-          Resize the viewport to watch every value scale continuously.
+          Smooth CSS <code class="text-cyan-400">clamp()</code>-based
+          fluid scaling. Resize the viewport to watch every value
+          scale continuously.
         </p>
       </header>
 
       <!-- Section 1: Fluid Text Size -->
       <section>
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest">1 — Fluid Text Size</h2>
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            1 — Fluid Text Size
+          </h2>
         </div>
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4">
+        <div
+          class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4"
+        >
           <div>
-            <p class="fw-text-[12px-48px] font-bold leading-none">Heading</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[12px-48px]</code>
+            <p class="fw-text-[12px-48px] font-bold leading-none">
+              Heading
+            </p>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[12px-48px]</code
+            >
           </div>
           <div>
-            <p class="fw-text-[14px-28px]">Subheading text that scales fluidly</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[14px-28px]</code>
+            <p class="fw-text-[14px-28px]">
+              Subheading text that scales fluidly
+            </p>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[14px-28px]</code
+            >
           </div>
           <div>
-            <p class="fw-text-[10px-16px] text-slate-400">Caption or helper text for secondary information</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[10px-16px]</code>
+            <p class="fw-text-[10px-16px] text-slate-400">
+              Caption or helper text for secondary information
+            </p>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[10px-16px]</code
+            >
           </div>
         </div>
       </section>
@@ -74,47 +104,83 @@ const mergeExamples = [
       <!-- Section 2: Fluid Spacing -->
       <section>
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest">2 — Fluid Spacing</h2>
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            2 — Fluid Spacing
+          </h2>
         </div>
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4">
+        <div
+          class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4"
+        >
           <div>
-            <div class="fw-p-[8px-48px] bg-cyan-400/10 border border-cyan-400/20 rounded-lg inline-block">
+            <div
+              class="fw-p-[8px-48px] bg-cyan-400/10 border border-cyan-400/20 rounded-lg inline-block"
+            >
               <span class="text-sm">all-sides padding</span>
             </div>
-            <code class="text-xs text-slate-500 mt-1 block">fw-p-[8px-48px]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-p-[8px-48px]</code
+            >
           </div>
           <div>
-            <div class="fw-px-[8px-40px] fw-py-[4px-20px] bg-purple-400/10 border border-purple-400/20 rounded-lg inline-block">
+            <div
+              class="fw-px-[8px-40px] fw-py-[4px-20px] bg-purple-400/10 border border-purple-400/20 rounded-lg inline-block"
+            >
               <span class="text-sm">x + y padding</span>
             </div>
-            <code class="text-xs text-slate-500 mt-1 block">fw-px-[8px-40px] + fw-py-[4px-20px]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-px-[8px-40px] + fw-py-[4px-20px]</code
+            >
           </div>
           <div class="flex fw-gap-[8px-32px]">
-            <div class="bg-white/10 rounded px-3 py-2 text-sm">item 1</div>
-            <div class="bg-white/10 rounded px-3 py-2 text-sm">item 2</div>
-            <div class="bg-white/10 rounded px-3 py-2 text-sm">item 3</div>
+            <div class="bg-white/10 rounded px-3 py-2 text-sm">
+              item 1
+            </div>
+            <div class="bg-white/10 rounded px-3 py-2 text-sm">
+              item 2
+            </div>
+            <div class="bg-white/10 rounded px-3 py-2 text-sm">
+              item 3
+            </div>
           </div>
-          <code class="text-xs text-slate-500 block">fw-gap-[8px-32px]</code>
+          <code class="text-xs text-slate-500 block"
+            >fw-gap-[8px-32px]</code
+          >
         </div>
       </section>
 
       <!-- Section 3: Negative Margin -->
       <section>
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest">3 — Negative Margin</h2>
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            3 — Negative Margin
+          </h2>
         </div>
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 overflow-hidden space-y-4">
+        <div
+          class="bg-white/[0.03] border border-white/10 rounded-xl p-6 overflow-hidden space-y-4"
+        >
           <div>
-            <div class="fw-mt-[-8px--32px] bg-cyan-400/20 border border-cyan-400/30 rounded p-2 text-sm">
+            <div
+              class="fw-mt-[-8px--32px] bg-cyan-400/20 border border-cyan-400/30 rounded p-2 text-sm"
+            >
               negative top margin
             </div>
-            <code class="text-xs text-slate-500 mt-1 block">fw-mt-[-8px--32px]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-mt-[-8px--32px]</code
+            >
           </div>
           <div>
-            <div class="fw-ml-[-4px--24px] bg-purple-400/20 border border-purple-400/30 rounded p-2 text-sm">
+            <div
+              class="fw-ml-[-4px--24px] bg-purple-400/20 border border-purple-400/30 rounded p-2 text-sm"
+            >
               negative left margin
             </div>
-            <code class="text-xs text-slate-500 mt-1 block">fw-ml-[-4px--24px]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-ml-[-4px--24px]</code
+            >
           </div>
         </div>
       </section>
@@ -122,28 +188,48 @@ const mergeExamples = [
       <!-- Section 4: Mixed Units -->
       <section>
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest">4 — Mixed Units (px + rem)</h2>
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            4 — Mixed Units (px + rem)
+          </h2>
         </div>
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4">
+        <div
+          class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4"
+        >
           <div>
-            <p class="fw-text-[1rem-4rem] font-bold leading-none">rem to rem</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[1rem-4rem]</code>
+            <p class="fw-text-[1rem-4rem] font-bold leading-none">
+              rem to rem
+            </p>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[1rem-4rem]</code
+            >
           </div>
           <div>
             <p class="fw-text-[14px-3rem]">px to rem</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[14px-3rem]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[14px-3rem]</code
+            >
           </div>
           <div>
-            <div class="fw-w-[100px-300px] fw-h-[40px-120px] bg-white/10 border border-white/20 rounded-lg flex items-center justify-center text-sm">
+            <div
+              class="fw-w-[100px-300px] fw-h-[40px-120px] bg-white/10 border border-white/20 rounded-lg flex items-center justify-center text-sm"
+            >
               fluid width + height
             </div>
-            <code class="text-xs text-slate-500 mt-1 block">fw-w-[100px-300px] fw-h-[40px-120px]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-w-[100px-300px] fw-h-[40px-120px]</code
+            >
           </div>
           <div>
-            <div class="fw-text-[12px-18px] fw-rounded-[4px-16px] border border-white/20 bg-white/5 inline-block fw-p-[6px-16px]">
+            <div
+              class="fw-text-[12px-18px] fw-rounded-[4px-16px] border border-white/20 bg-white/5 inline-block fw-p-[6px-16px]"
+            >
               fluid border-radius
             </div>
-            <code class="text-xs text-slate-500 mt-1 block">fw-rounded-[4px-16px]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-rounded-[4px-16px]</code
+            >
           </div>
         </div>
       </section>
@@ -151,26 +237,44 @@ const mergeExamples = [
       <!-- Section 5: Fluid Color Interpolation -->
       <section>
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest">5 — Fluid Color Interpolation</h2>
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            5 — Fluid Color Interpolation
+          </h2>
         </div>
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4">
+        <div
+          class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4"
+        >
           <div>
-            <div class="fw-bg-[#0ea5e9-#8b5cf6] fw-p-[16px-32px] rounded-lg font-semibold">
+            <div
+              class="fw-bg-[#0ea5e9-#8b5cf6] fw-p-[16px-32px] rounded-lg font-semibold"
+            >
               blue → purple background
             </div>
-            <code class="text-xs text-slate-500 mt-1 block">fw-bg-[#0ea5e9-#8b5cf6]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-bg-[#0ea5e9-#8b5cf6]</code
+            >
           </div>
           <div>
-            <p class="fw-text-[#22d3ee-#f472b6] fw-text-[18px-32px] font-bold">
+            <p
+              class="fw-text-[#22d3ee-#f472b6] fw-text-[18px-32px] font-bold"
+            >
               cyan → pink text interpolation
             </p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[#22d3ee-#f472b6]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[#22d3ee-#f472b6]</code
+            >
           </div>
           <div>
-            <div class="fw-bg-[#111827-#f0fdf4] fw-text-[#f9fafb-#111827] fw-p-[16px-32px] rounded-lg font-medium">
+            <div
+              class="fw-bg-[#111827-#f0fdf4] fw-text-[#f9fafb-#111827] fw-p-[16px-32px] rounded-lg font-medium"
+            >
               dark → light (bg + text both interpolate)
             </div>
-            <code class="text-xs text-slate-500 mt-1 block">fw-bg-[#111827-#f0fdf4] fw-text-[#f9fafb-#111827]</code>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-bg-[#111827-#f0fdf4] fw-text-[#f9fafb-#111827]</code
+            >
           </div>
         </div>
       </section>
@@ -178,24 +282,48 @@ const mergeExamples = [
       <!-- Section 6: Range Modifiers -->
       <section>
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest">6 — Range Modifiers</h2>
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            6 — Range Modifiers
+          </h2>
         </div>
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4">
+        <div
+          class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-4"
+        >
           <div>
-            <p class="fw-text-[12px-32px]/narrow font-semibold">narrow range (320px→768px)</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[12px-32px]/narrow</code>
+            <p class="fw-text-[12px-32px]/narrow font-semibold">
+              narrow range (320px→768px)
+            </p>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[12px-32px]/narrow</code
+            >
           </div>
           <div>
-            <p class="fw-text-[14px-40px]/wide font-semibold">wide range (768px→1920px)</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[14px-40px]/wide</code>
+            <p class="fw-text-[14px-40px]/wide font-semibold">
+              wide range (768px→1920px)
+            </p>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[14px-40px]/wide</code
+            >
           </div>
           <div>
-            <p class="fw-text-[13px-24px]/post font-semibold">post range (600px→1000px)</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[13px-24px]/post</code>
+            <p class="fw-text-[13px-24px]/post font-semibold">
+              post range (600px→1000px)
+            </p>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[13px-24px]/post</code
+            >
           </div>
           <div>
-            <p class="fw-text-[12px-28px]/[500-900] font-semibold text-cyan-400">inline range (500px→900px)</p>
-            <code class="text-xs text-slate-500 mt-1 block">fw-text-[12px-28px]/[500-900]</code>
+            <p
+              class="fw-text-[12px-28px]/[500-900] font-semibold text-cyan-400"
+            >
+              inline range (500px→900px)
+            </p>
+            <code class="text-xs text-slate-500 mt-1 block"
+              >fw-text-[12px-28px]/[500-900]</code
+            >
           </div>
         </div>
       </section>
@@ -203,23 +331,36 @@ const mergeExamples = [
       <!-- Section 7: Real-World Card -->
       <section>
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest">7 — Real-World Card</h2>
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            7 — Real-World Card
+          </h2>
         </div>
-        <div class="fw-p-[16px-48px] fw-rounded-[8px-24px] fw-bg-[#0f172a-#1e293b] border border-white/10 fw-gap-[12px-32px] flex flex-col">
+        <div
+          class="fw-p-[16px-48px] fw-rounded-[8px-24px] fw-bg-[#0f172a-#1e293b] border border-white/10 fw-gap-[12px-32px] flex flex-col"
+        >
           <div class="flex items-center fw-gap-[8px-20px]">
-            <div class="fw-w-[32px-64px] fw-h-[32px-64px] fw-rounded-[6px-16px] bg-cyan-400/20 flex items-center justify-center">
+            <div
+              class="fw-w-[32px-64px] fw-h-[32px-64px] fw-rounded-[6px-16px] bg-cyan-400/20 flex items-center justify-center"
+            >
               <span class="fw-text-[14px-24px]">⚡</span>
             </div>
-            <h3 class="fw-text-[16px-28px] font-bold fw-text-[#94a3b8-#f8fafc]">
+            <h3
+              class="fw-text-[16px-28px] font-bold fw-text-[#94a3b8-#f8fafc]"
+            >
               Fluid Card Title
             </h3>
           </div>
-          <p class="fw-text-[12px-16px] text-slate-400 leading-relaxed">
-            Multiple <code class="text-cyan-400">fw-*</code> classes combined: fluid padding,
-            border-radius, gap, sizing, and color interpolation. Resize to watch everything scale.
+          <p
+            class="fw-text-[12px-16px] text-slate-400 leading-relaxed"
+          >
+            Multiple <code class="text-cyan-400">fw-*</code> classes combined:
+            fluid padding, border-radius, gap, sizing, and color interpolation.
+            Resize to watch everything scale.
           </p>
           <a
-            href="#"
+            href=""
             class="fw-text-[11px-14px] fw-px-[12px-24px] fw-py-[6px-12px] fw-rounded-[4px-10px] fw-bg-[#0891b2-#7c3aed] font-semibold self-start"
           >
             Learn more →
@@ -230,15 +371,23 @@ const mergeExamples = [
       <!-- Section 8: tailwind-merge -->
       <section>
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xs font-mono text-slate-500 uppercase tracking-widest">8 — tailwind-merge</h2>
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            8 — tailwind-merge
+          </h2>
         </div>
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-6">
+        <div
+          class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-6"
+        >
           <div>
             <p class="text-sm text-slate-400 mb-3">
-              Use <code class="text-cyan-400">withFluidwind()</code> to extend tailwind-merge so it
-              correctly resolves conflicts between <code class="text-cyan-400">fw-*</code> classes.
+              Use <code class="text-cyan-400">withFluidwind()</code> to
+              extend tailwind-merge so it correctly resolves conflicts between
+              <code class="text-cyan-400">fw-*</code> classes.
             </p>
-            <pre class="bg-slate-900 border border-white/10 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-slate-300"><span class="text-slate-500">// setup</span>
+            <pre
+              class="bg-slate-900 border border-white/10 rounded-lg p-4 text-sm overflow-x-auto"><code class="text-slate-300"><span class="text-slate-500">// setup</span>
 <span class="text-purple-400">import</span> <span class="text-slate-100">&#123; extendTailwindMerge &#125;</span> <span class="text-purple-400">from</span> <span class="text-emerald-400">'tailwind-merge'</span>
 <span class="text-purple-400">import</span> <span class="text-slate-100">&#123; withFluidwind &#125;</span> <span class="text-purple-400">from</span> <span class="text-emerald-400">'fluidwind/tailwind-merge'</span>
 
@@ -246,33 +395,58 @@ const mergeExamples = [
           </div>
 
           <div>
-            <p class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3">Merge results (computed at build time)</p>
+            <p
+              class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3"
+            >
+              Merge results (computed at build time)
+            </p>
             <div class="overflow-x-auto">
               <table class="w-full text-sm border-collapse">
                 <thead>
                   <tr class="border-b border-white/10">
-                    <th class="text-left py-2 pr-4 text-xs text-slate-500 font-normal">Input A</th>
-                    <th class="text-left py-2 pr-4 text-xs text-slate-500 font-normal">Input B</th>
-                    <th class="text-left py-2 pr-4 text-xs text-cyan-400 font-normal">Output</th>
-                    <th class="text-left py-2 text-xs text-slate-500 font-normal">Note</th>
+                    <th
+                      class="text-left py-2 pr-4 text-xs text-slate-500 font-normal"
+                      >Input A</th
+                    >
+                    <th
+                      class="text-left py-2 pr-4 text-xs text-slate-500 font-normal"
+                      >Input B</th
+                    >
+                    <th
+                      class="text-left py-2 pr-4 text-xs text-cyan-400 font-normal"
+                      >Output</th
+                    >
+                    <th
+                      class="text-left py-2 text-xs text-slate-500 font-normal"
+                      >Note</th
+                    >
                   </tr>
                 </thead>
                 <tbody>
-                  {mergeExamples.map((ex) => (
-                    <tr class="border-b border-white/5 align-top">
-                      <td class="py-3 pr-4 font-mono text-xs text-slate-400 whitespace-nowrap">{ex.inputs[0]}</td>
-                      <td class="py-3 pr-4 font-mono text-xs text-slate-400 whitespace-nowrap">{ex.inputs[1]}</td>
-                      <td class="py-3 pr-4 font-mono text-xs text-emerald-400 whitespace-nowrap">{ex.output}</td>
-                      <td class="py-3 text-xs text-slate-500">{ex.note}</td>
-                    </tr>
-                  ))}
+                  {
+                    mergeExamples.map((ex) => (
+                      <tr class="border-b border-white/5 align-top">
+                        <td class="py-3 pr-4 font-mono text-xs text-slate-400 whitespace-nowrap">
+                          {ex.inputs[0]}
+                        </td>
+                        <td class="py-3 pr-4 font-mono text-xs text-slate-400 whitespace-nowrap">
+                          {ex.inputs[1]}
+                        </td>
+                        <td class="py-3 pr-4 font-mono text-xs text-emerald-400 whitespace-nowrap">
+                          {ex.output}
+                        </td>
+                        <td class="py-3 text-xs text-slate-500">
+                          {ex.note}
+                        </td>
+                      </tr>
+                    ))
+                  }
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </section>
-
     </div>
   </body>
 </html>
