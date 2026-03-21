@@ -31,10 +31,22 @@ export interface ParsedFluidColor {
 
 export type ParsedValue = ParsedFluidValue | ParsedFluidColor;
 
+/** A named scale of fluid value pairs: { md: ["16px", "24px"] } */
+export type FluidScale = Record<string, [string, string]>;
+
 export interface FluidWindConfig {
   defaultRange?: [string, string];
   ranges?: Record<string, [string, string]>;
   remBase?: number;
+  // Semantic theme scales
+  fontSize?: FluidScale;
+  spacing?: FluidScale;
+  padding?: FluidScale;
+  margin?: FluidScale;
+  gap?: FluidScale;
+  sizing?: FluidScale;
+  borderWidth?: FluidScale;
+  borderRadius?: FluidScale;
 }
 
 export interface FluidWindOptions {
