@@ -9,11 +9,13 @@ on:
     branches: [main]
     paths:
       - "site/**"
+      - "pnpm-lock.yaml"
       - ".github/workflows/cd.yml"
   pull_request:
     branches: [main]
     paths:
       - "site/**"
+      - "pnpm-lock.yaml"
       - ".github/workflows/cd.yml"
 
 jobs:
