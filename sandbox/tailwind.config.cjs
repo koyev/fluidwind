@@ -15,6 +15,19 @@ module.exports = {
         wide: ["768px", "1920px"],
         post: ["600px", "1000px"],
       },
+      fontSize: {
+        sm:  ["14px", "18px"],
+        md:  ["16px", "24px"],
+        lg:  ["20px", "32px"],
+        xl:  ["28px", "48px"],
+        "2xl": ["36px", "64px"],
+      },
+      spacing: {
+        xs: ["4px",  "8px"],
+        sm: ["8px",  "16px"],
+        md: ["16px", "32px"],
+        lg: ["24px", "64px"],
+      },
     },
   },
 };

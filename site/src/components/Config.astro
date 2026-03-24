@@ -37,6 +37,45 @@ const inlineRangeCode = `<!-- No config needed for one-off ranges -->
   Scales from 480px to 1280px viewport width
 </h1>`;
 
+const semanticScalesCode = `theme: {
+  fluidwind: {
+    defaultRange: ['375px', '1440px'],
+
+    // Named font-size scale — use as fw-text-md, fw-text-xl, etc.
+    fontSize: {
+      sm:  ['14px', '18px'],
+      md:  ['16px', '24px'],
+      lg:  ['20px', '32px'],
+      xl:  ['28px', '48px'],
+      '2xl': ['36px', '64px'],
+    },
+
+    // Shared spacing scale — drives padding, margin, gap, and sizing utilities
+    spacing: {
+      xs: ['4px',  '8px'],
+      sm: ['8px',  '16px'],
+      md: ['16px', '32px'],
+      lg: ['24px', '64px'],
+    },
+
+    // More specific scales override spacing for their utility group:
+    // padding, margin, gap, sizing, borderWidth, borderRadius
+  },
+},`;
+
+const semanticUsageCode = `<!-- font size -->
+<h1 class="fw-text-xl">Scales 28px → 48px</h1>
+<p  class="fw-text-md">Scales 16px → 24px</p>
+
+<!-- spacing via shared scale -->
+<section class="fw-p-lg fw-gap-sm">
+  <!-- fw-p-lg  → padding  24px → 64px -->
+  <!-- fw-gap-sm → gap     8px  → 16px -->
+</section>
+
+<!-- arbitrary values still work alongside named scales -->
+<p class="fw-text-[15px-22px]">One-off size</p>`;
+
 const twMergeCode = `import { extendTailwindMerge } from 'tailwind-merge'
 import { withFluidwind } from 'fluidwind/tailwind-merge'
 
@@ -50,7 +89,7 @@ export const twMerge = extendTailwindMerge(withFluidwind())
 // twMerge('fw-gap-[4px-16px] gap-8')       → 'gap-8'
 // twMerge('fw-p-[4px-8px] fw-p-[8px-16px]') → 'fw-p-[8px-16px]'`;
 
-const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase, hlTwMerge] =
+const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase, hlTwMerge, hlSemanticScales, hlSemanticUsage] =
   await Promise.all([
     codeToHtml(defaultRangeCode, {
       lang: "js",
@@ -70,6 +109,14 @@ const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase, hlTwMerge] =
     }),
     codeToHtml(twMergeCode, {
       lang: "ts",
+      theme: "github-dark-dimmed",
+    }),
+    codeToHtml(semanticScalesCode, {
+      lang: "js",
+      theme: "github-dark-dimmed",
+    }),
+    codeToHtml(semanticUsageCode, {
+      lang: "html",
       theme: "github-dark-dimmed",
     }),
   ]);
@@ -320,6 +367,116 @@ const [hlDefaultRange, hlNamedRanges, hlInlineRange, hlRemBase, hlTwMerge] =
           <div set:html={hlRemBase} />
         </div>
       </details>
+      <!-- semanticScales -->
+      <details class="card group">
+        <summary
+          class="flex items-center justify-between cursor-pointer list-none"
+        >
+          <div>
+            <h3 class="font-display font-semibold text-text">
+              Semantic Scales
+            </h3>
+            <p class="text-sm text-muted mt-0.5">
+              Define named values for <code class="code-inline text-xs">fontSize</code>,
+              <code class="code-inline text-xs">spacing</code>, and more — use them as
+              <code class="code-inline text-xs">fw-text-md</code> instead of
+              <code class="code-inline text-xs">fw-text-[16px-24px]</code>.
+            </p>
+          </div>
+          <svg
+            class="transition-transform group-open:rotate-180 text-muted"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </summary>
+        <div class="mt-4 space-y-4">
+          <p class="text-sm text-muted">
+            Semantic scales eliminate magic numbers from your markup. Define them
+            once in your Tailwind config; every matching
+            <code class="code-inline text-xs">fw-*</code> utility picks them up
+            automatically. Arbitrary
+            <code class="code-inline text-xs">[min-max]</code> values still work
+            alongside named keys — they are never replaced.
+          </p>
+          <div
+            class="rounded-xl border border-border overflow-hidden"
+          >
+            <div
+              class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+            >
+              <span class="text-xs font-mono text-muted"
+                >tailwind.config.js</span
+              >
+              <button
+                class="config-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+                data-copy={semanticScalesCode}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect
+                    x="9"
+                    y="9"
+                    width="13"
+                    height="13"
+                    rx="2"
+                    ry="2"></rect><path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div set:html={hlSemanticScales} />
+          </div>
+          <div
+            class="rounded-xl border border-border overflow-hidden"
+          >
+            <div
+              class="flex items-center justify-between px-4 py-2.5 border-b border-border bg-surface2/50"
+            >
+              <span class="text-xs font-mono text-muted">example.html</span>
+              <button
+                class="config-block-copy text-muted hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+                data-copy={semanticUsageCode}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <rect
+                    x="9"
+                    y="9"
+                    width="13"
+                    height="13"
+                    rx="2"
+                    ry="2"></rect><path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  ></path>
+                </svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div set:html={hlSemanticUsage} />
+          </div>
+        </div>
+      </details>
+
       <!-- tailwind-merge -->
       <details class="card group">
         <summary

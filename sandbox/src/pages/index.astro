@@ -447,6 +447,172 @@ const mergeExamples = [
           </div>
         </div>
       </section>
+
+      <!-- Section 9: Semantic Scales -->
+      <section>
+        <div class="flex items-center justify-between mb-4">
+          <h2
+            class="text-xs font-mono text-slate-500 uppercase tracking-widest"
+          >
+            9 — Semantic Scales
+          </h2>
+        </div>
+        <div
+          class="bg-white/[0.03] border border-white/10 rounded-xl p-6 space-y-6"
+        >
+          <div>
+            <p class="text-sm text-slate-400 mb-4">
+              Define named scales in your Tailwind config — then use them like
+              <code class="text-cyan-400">fw-text-md</code> instead of
+              <code class="text-cyan-400">fw-text-[16px-24px]</code>.
+            </p>
+            <!-- Font sizes -->
+            <p
+              class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3"
+            >
+              fontSize scale
+            </p>
+            <div class="space-y-3">
+              <div>
+                <p class="fw-text-sm font-medium">
+                  sm — scales 14px → 18px
+                </p>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-text-sm</code
+                >
+              </div>
+              <div>
+                <p class="fw-text-md font-medium">
+                  md — scales 16px → 24px
+                </p>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-text-md</code
+                >
+              </div>
+              <div>
+                <p class="fw-text-lg font-bold">
+                  lg — scales 20px → 32px
+                </p>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-text-lg</code
+                >
+              </div>
+              <div>
+                <p class="fw-text-xl font-bold leading-tight">
+                  xl — scales 28px → 48px
+                </p>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-text-xl</code
+                >
+              </div>
+              <div>
+                <p class="fw-text-2xl font-bold leading-none">
+                  2xl — scales 36px → 64px
+                </p>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-text-2xl</code
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Spacing scale -->
+          <div>
+            <p
+              class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3"
+            >
+              spacing scale (padding, margin, gap)
+            </p>
+            <div class="space-y-3">
+              <div>
+                <div
+                  class="fw-p-xs bg-cyan-400/10 border border-cyan-400/20 rounded inline-block"
+                >
+                  <span class="text-sm">xs — 4px → 8px</span>
+                </div>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-p-xs</code
+                >
+              </div>
+              <div>
+                <div
+                  class="fw-p-sm bg-purple-400/10 border border-purple-400/20 rounded inline-block"
+                >
+                  <span class="text-sm">sm — 8px → 16px</span>
+                </div>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-p-sm</code
+                >
+              </div>
+              <div>
+                <div
+                  class="fw-p-md bg-cyan-400/10 border border-cyan-400/20 rounded inline-block"
+                >
+                  <span class="text-sm">md — 16px → 32px</span>
+                </div>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-p-md</code
+                >
+              </div>
+              <div>
+                <div
+                  class="fw-p-lg bg-purple-400/10 border border-purple-400/20 rounded inline-block"
+                >
+                  <span class="text-sm">lg — 24px → 64px</span>
+                </div>
+                <code class="text-xs text-slate-500 mt-1 block"
+                  >fw-p-lg</code
+                >
+              </div>
+              <div class="flex fw-gap-sm">
+                <div class="bg-white/10 rounded px-3 py-2 text-sm">
+                  item 1
+                </div>
+                <div class="bg-white/10 rounded px-3 py-2 text-sm">
+                  item 2
+                </div>
+                <div class="bg-white/10 rounded px-3 py-2 text-sm">
+                  item 3
+                </div>
+              </div>
+              <code class="text-xs text-slate-500 block">fw-gap-sm</code>
+            </div>
+          </div>
+
+          <!-- Combined example -->
+          <div>
+            <p
+              class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-3"
+            >
+              combined
+            </p>
+            <div
+              class="fw-p-lg border border-white/10 rounded-xl bg-white/[0.02] flex flex-col fw-gap-sm"
+            >
+              <h3 class="fw-text-xl font-bold text-cyan-400">
+                Semantic card title
+              </h3>
+              <p class="fw-text-md text-slate-400">
+                All values driven by named scale entries — no magic numbers.
+              </p>
+              <div class="flex fw-gap-sm">
+                <span
+                  class="fw-text-sm fw-p-xs bg-white/10 rounded font-mono"
+                  >fw-text-xl</span
+                >
+                <span
+                  class="fw-text-sm fw-p-xs bg-white/10 rounded font-mono"
+                  >fw-p-lg</span
+                >
+                <span
+                  class="fw-text-sm fw-p-xs bg-white/10 rounded font-mono"
+                  >fw-gap-sm</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </body>
 </html>
