@@ -5,4 +5,5 @@ dist/
 .DS_Store
 .vercel
 package-lock.json
-sandbox/pnpm-lock.yaml
+**/package-lock.json
+**/pnpm-lock.yaml
