@@ -6,4 +6,5 @@ dist/
 .vercel
 package-lock.json
 **/package-lock.json
-**/pnpm-lock.yaml
+sandbox/pnpm-lock.yaml
+site/pnpm-lock.yaml
