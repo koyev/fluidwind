@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-03-26
+
+### Added
+
+- **Semantic Scales** — define named fluid values once in `theme.fluidwind` and reference them by key instead of repeating pixel ranges in every class. Eight scale keys are supported: `fontSize`, `spacing`, `padding`, `margin`, `gap`, `sizing`, `borderWidth`, and `borderRadius`. More specific keys (e.g. `padding`) take precedence over the shared `spacing` key for their utility group.
+
+  ```js
+  // tailwind.config.js
+  theme: {
+    fluidwind: {
+      fontSize: { md: ["16px", "24px"], xl: ["28px", "48px"] },
+      spacing:  { sm: ["8px", "16px"],  lg: ["24px", "64px"] },
+    },
+  }
+  ```
+
+  ```html
+  <!-- instead of fw-text-[16px-24px] fw-p-[24px-64px] -->
+  <h1 class="fw-text-md fw-p-lg">Named scale keys</h1>
+  ```
+
+  Arbitrary `[min-max]` values continue to work alongside named keys — nothing is removed or replaced.
+
+---
+
 ## [1.1.1] - 2026-03-21
 
 ### Fixed

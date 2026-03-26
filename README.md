@@ -75,6 +75,23 @@ module.exports = {
         post: ["600px", "1000px"],
         wide: ["1024px", "1920px"],
       },
+
+      // Named font-size scale — use as fw-text-md, fw-text-xl, etc.
+      fontSize: {
+        sm:    ["14px", "18px"],
+        md:    ["16px", "24px"],
+        lg:    ["20px", "32px"],
+        xl:    ["28px", "48px"],
+        "2xl": ["36px", "64px"],
+      },
+
+      // Shared spacing scale — drives padding, margin, gap, and sizing utilities
+      spacing: {
+        xs: ["4px",  "8px"],
+        sm: ["8px",  "16px"],
+        md: ["16px", "32px"],
+        lg: ["24px", "64px"],
+      },
     },
   },
 };
@@ -163,6 +180,21 @@ background-color: color-mix(
 <!-- Inline viewport range -->
 <p class="fw-text-[16px-24px]/[400-1200]">Custom range</p>
 ```
+
+### Semantic Scales
+
+Define named fluid values in your config and use them by key — no more repeating pixel ranges:
+
+```html
+<!-- instead of fw-text-[16px-24px] everywhere -->
+<h1 class="fw-text-xl">Heading</h1>
+<p  class="fw-text-md">Body text</p>
+
+<!-- spacing scale drives padding, margin, gap, and sizing -->
+<section class="fw-p-lg fw-gap-sm">...</section>
+```
+
+Arbitrary `[min-max]` values still work alongside named keys — they are never replaced.
 
 ### With Tailwind Breakpoints
 
